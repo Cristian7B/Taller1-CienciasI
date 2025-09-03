@@ -9,5 +9,5 @@ package co.edu.udistrital.taller1.model;
  * @author crisc
  */
 public class Candidato {
-    
+        
 }
