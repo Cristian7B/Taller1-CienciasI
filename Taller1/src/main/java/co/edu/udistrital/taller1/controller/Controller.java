@@ -4,19 +4,24 @@
  */
 package co.edu.udistrital.taller1.controller;
 
-import co.edu.udistrital.taller1.view.VentanaPrincipal;
-
 /**
  *
  * @author crisc
  */
 public class Controller {
-
-    private final VentanaPrincipal ventana;
+    private ControllerVista controllerVista;
 
     public Controller() {
-        ventana = new VentanaPrincipal(this);
-        ventana.setVisible(true);
+        this.controllerVista = new ControllerVista(this);
     }
-    
+
+    public void generarElementos(int N, int M) {
+        String algoritmo = controllerVista.obtenerAlgoritmo();
+        String distribucion = controllerVista.obtenerDistribucion();
+        controllerVista.getVentanaPrincipal().mostrarMensaje("Generando elementos..." + N + " " + M + " " + algoritmo + " " + distribucion);
+    }
+
+    public void ordenarElementos() {
+    }
+
 }
