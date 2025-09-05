@@ -82,7 +82,6 @@ public class ControllerCandidato {
                 valores = generarDistribucionUniforme(m);
                 break;
         }
-
         return valores;
     }
 
