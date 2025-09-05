@@ -4,10 +4,19 @@
  */
 package co.edu.udistrital.taller1.controller;
 
+import co.edu.udistrital.taller1.view.VentanaPrincipal;
+
 /**
  *
  * @author crisc
  */
 public class Controller {
+
+    private final VentanaPrincipal ventana;
+
+    public Controller() {
+        ventana = new VentanaPrincipal(this);
+        ventana.setVisible(true);
+    }
     
 }
