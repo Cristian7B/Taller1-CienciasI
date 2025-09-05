@@ -7,7 +7,9 @@ package co.edu.udistrital.taller1.controller;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
+
 import co.edu.udistrital.taller1.model.Candidato;
+
 
 /**
  *
@@ -15,10 +17,14 @@ import co.edu.udistrital.taller1.model.Candidato;
  */
 public class ControllerCandidato {
 
+    
+
     private final Random random;
+    private final Ordenador ordenador;
 
     public ControllerCandidato(long semilla) {
         this.random = new Random(semilla);
+        this.ordenador = new Ordenador();
     }
 
     /**

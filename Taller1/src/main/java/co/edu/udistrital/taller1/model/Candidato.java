@@ -72,6 +72,30 @@ public class Candidato {
     public ArrayList<Corrupcion> getCorrupcion() {
         return new ArrayList<>(corrupcion);
     }
+    public void setCorrupcion(ArrayList<Corrupcion> corrupcion) {
+        this.corrupcion.clear();
+        this.corrupcion.addAll(corrupcion);
+    }
+
+    public void setMarchas(ArrayList<Marchas> marchas) {
+        this.marchas.clear();
+        this.marchas.addAll(marchas);
+    }
+
+    public void setHorasClase(ArrayList<HorasClase> horasClase) {
+        this.horasClase.clear();
+        this.horasClase.addAll(horasClase);
+    }
+
+    public void setPrebendas(ArrayList<Prebendas> prebendas) {
+        this.prebendas.clear();
+        this.prebendas.addAll(prebendas);
+    }
+
+    public void setSobornos(ArrayList<Sobornos> sobornos) {
+        this.sobornos.clear();
+        this.sobornos.addAll(sobornos);
+    }
 
     @Override
     public String toString() {

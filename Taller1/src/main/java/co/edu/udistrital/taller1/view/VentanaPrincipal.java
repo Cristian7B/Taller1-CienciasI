@@ -21,14 +21,12 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-import co.edu.udistrital.taller1.controller.Controller;
 import co.edu.udistrital.taller1.controller.ControllerVista;
 /**
  *
  * @author crisc
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
-
 
     // Componentes
     private final JTextField txtN;
@@ -38,7 +36,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private final JButton btnEjecutar;
     private final JTable tablaResultados;
     private final DefaultTableModel modeloTabla;
-    private ControllerVista controllerVista;
+    private final ControllerVista controllerVista;
 
     public VentanaPrincipal(ControllerVista controllerVista) {
         this.controllerVista = controllerVista;
@@ -53,7 +51,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         add(panel);
 
-        // Panel superior con GridBagLayout
+        // Panel superior con BorderLayout
+        JPanel panelSuperior = new JPanel(new BorderLayout(10, 10));
+
+        // Panel de inputs (a la izquierda)
         JPanel panelInputs = new JPanel(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(5, 5, 5, 5); // márgenes
@@ -93,14 +94,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         panelInputs.add(cmbDistribucion, gbc);
         gbc.gridwidth = 1;
 
-        panel.add(panelInputs, BorderLayout.NORTH);
-
-        // Botón ejecutar
+        // Botón ejecutar (a la derecha)
         btnEjecutar = new JButton("Generar y Ordenar");
-        btnEjecutar.setPreferredSize(new Dimension(200, 40));
-        JPanel panelBoton = new JPanel();
-        panelBoton.add(btnEjecutar);
-        panel.add(panelBoton, BorderLayout.CENTER);
+        btnEjecutar.setPreferredSize(new Dimension(200, 20));
+
+        // Agregar inputs y botón al panel superior
+        panelSuperior.add(panelInputs, BorderLayout.CENTER);
+        panelSuperior.add(btnEjecutar, BorderLayout.EAST);
+
+        // Agregar panel superior al principal
+        panel.add(panelSuperior, BorderLayout.NORTH);
 
         // Tabla de resultados
         String[] columnas = {"Algoritmo", "Comparaciones", "Intercambios", "Tiempo (ms)"};
@@ -109,7 +112,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         tablaResultados.setRowHeight(25);
 
         JScrollPane scroll = new JScrollPane(tablaResultados);
-        panel.add(scroll, BorderLayout.SOUTH);
+        panel.add(scroll, BorderLayout.CENTER);
     }
 
     public void mostrarMensaje(String mensaje) {

@@ -4,10 +4,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import co.edu.udistrital.taller1.view.VentanaPrincipal;
-
+/**
+ *
+ * @author crisc
+ */
 public class ControllerVista implements ActionListener{
-    private Controller controller;
-    private VentanaPrincipal ventanaPrincipal;
+    private final Controller controller;
+    private final VentanaPrincipal ventanaPrincipal;
 
     public ControllerVista(Controller controller) {
         this.controller = controller;
@@ -16,7 +19,7 @@ public class ControllerVista implements ActionListener{
         asignarOyentes();
     }
 
-    public void asignarOyentes() {
+    public final void asignarOyentes() {
         ventanaPrincipal.getBtnEjecutar().addActionListener(this);
         ventanaPrincipal.getBtnEjecutar().setActionCommand("Generar y Ordenar");
     }
@@ -26,9 +29,10 @@ public class ControllerVista implements ActionListener{
         String comando = e.getActionCommand();
         if (comando.equals("Generar y Ordenar")) {
             if (validarElementos()) {
+                String algoritmo = obtenerAlgoritmo();
                 ventanaPrincipal.mostrarMensaje(obtenerDistribucion());
                 controller.generarElementos(obtenerN(), obtenerM());
-                controller.ordenarElementos();
+                controller.ordenarElementos(algoritmo);
             } else {
                 ventanaPrincipal.mostrarMensaje("Por favor, ingrese valores válidos.");
             }
