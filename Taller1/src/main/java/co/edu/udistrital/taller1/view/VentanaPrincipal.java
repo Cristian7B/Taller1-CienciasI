@@ -22,6 +22,7 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 import co.edu.udistrital.taller1.controller.ControllerVista;
+
 /**
  *
  * @author crisc
@@ -60,36 +61,52 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         gbc.insets = new Insets(5, 5, 5, 5); // márgenes
 
         // Fila 1 - N y M
-        gbc.gridx = 0; gbc.gridy = 0; gbc.anchor = GridBagConstraints.EAST;
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.anchor = GridBagConstraints.EAST;
         panelInputs.add(new JLabel("Número de candidatos (N):"), gbc);
 
-        gbc.gridx = 1; gbc.gridy = 0; gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.gridx = 1;
+        gbc.gridy = 0;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
         txtN = new JTextField(10);
         panelInputs.add(txtN, gbc);
 
-        gbc.gridx = 2; gbc.gridy = 0; gbc.anchor = GridBagConstraints.EAST;
+        gbc.gridx = 2;
+        gbc.gridy = 0;
+        gbc.anchor = GridBagConstraints.EAST;
         panelInputs.add(new JLabel("Valor máximo de atributos (M):"), gbc);
 
-        gbc.gridx = 3; gbc.gridy = 0; gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.gridx = 3;
+        gbc.gridy = 0;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
         txtM = new JTextField(10);
         panelInputs.add(txtM, gbc);
 
         // Fila 2 - Algoritmo
-        gbc.gridx = 0; gbc.gridy = 1; gbc.anchor = GridBagConstraints.EAST;
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        gbc.anchor = GridBagConstraints.EAST;
         panelInputs.add(new JLabel("Algoritmo de ordenamiento:"), gbc);
 
-        gbc.gridx = 1; gbc.gridy = 1; gbc.gridwidth = 3;
-        cmbAlgoritmo = new JComboBox<>(new String[]{"Burbuja", "Inserción", "Selección", "MergeSort", "QuickSort"});
+        gbc.gridx = 1;
+        gbc.gridy = 1;
+        gbc.gridwidth = 3;
+        cmbAlgoritmo = new JComboBox<>(new String[] { "Burbuja", "Inserción", "Selección", "MergeSort", "QuickSort" });
         cmbAlgoritmo.setPreferredSize(new Dimension(200, 25));
         panelInputs.add(cmbAlgoritmo, gbc);
         gbc.gridwidth = 1;
 
         // Fila 3 - Distribución
-        gbc.gridx = 0; gbc.gridy = 2; gbc.anchor = GridBagConstraints.EAST;
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        gbc.anchor = GridBagConstraints.EAST;
         panelInputs.add(new JLabel("Distribución de datos:"), gbc);
 
-        gbc.gridx = 1; gbc.gridy = 2; gbc.gridwidth = 3;
-        cmbDistribucion = new JComboBox<>(new String[]{"Aleatoria", "Casi ordenada", "Inversa"});
+        gbc.gridx = 1;
+        gbc.gridy = 2;
+        gbc.gridwidth = 3;
+        cmbDistribucion = new JComboBox<>(new String[] { "Aleatoria", "Casi ordenada", "Inversa" });
         cmbDistribucion.setPreferredSize(new Dimension(200, 25));
         panelInputs.add(cmbDistribucion, gbc);
         gbc.gridwidth = 1;
@@ -106,7 +123,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         panel.add(panelSuperior, BorderLayout.NORTH);
 
         // Tabla de resultados
-        String[] columnas = {"Algoritmo", "Comparaciones", "Intercambios", "Tiempo (ms)"};
+        String[] columnas = { "Algoritmo", "Distribución", "N", "M", "Comparaciones", "Intercambios", "Tiempo (ms)" };
         modeloTabla = new DefaultTableModel(columnas, 0);
         tablaResultados = new JTable(modeloTabla);
         tablaResultados.setRowHeight(25);
@@ -119,14 +136,41 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, mensaje);
     }
 
-    public String getN() { return txtN.getText(); }
-    public String getM() { return txtM.getText(); }
-    public String getAlgoritmo() { return (String) cmbAlgoritmo.getSelectedItem(); }
-    public String getDistribucion() { return (String) cmbDistribucion.getSelectedItem(); }
-    public JButton getBtnEjecutar() { return btnEjecutar; }
+    public String getN() {
+        return txtN.getText();
+    }
 
+    public String getM() {
+        return txtM.getText();
+    }
+
+    public String getAlgoritmo() {
+        return (String) cmbAlgoritmo.getSelectedItem();
+    }
+
+    public String getDistribucion() {
+        return (String) cmbDistribucion.getSelectedItem();
+    }
+
+    public JButton getBtnEjecutar() {
+        return btnEjecutar;
+    }
+
+    public void agregarResultado(String algoritmo, String distribucion, int n, int m, long comparaciones,
+            long intercambios, long tiempo) {
+        modeloTabla.addRow(new Object[] { algoritmo, distribucion, n, m, comparaciones, intercambios, tiempo });
+    }
+
+    // Método de compatibilidad (mantener por si acaso)
     public void agregarResultado(String algoritmo, long comparaciones, long intercambios, long tiempo) {
-        modeloTabla.addRow(new Object[]{algoritmo, comparaciones, intercambios, tiempo});
+        // Obtener valores actuales de la interfaz
+        String distribucion = getDistribucion();
+        int n = Integer.parseInt(getN().isEmpty() ? "0" : getN());
+        int m = Integer.parseInt(getM().isEmpty() ? "0" : getM());
+        agregarResultado(algoritmo, distribucion, n, m, comparaciones, intercambios, tiempo);
+    }
+
+    public void limpiarTabla() {
+        modeloTabla.setRowCount(0);
     }
 }
-

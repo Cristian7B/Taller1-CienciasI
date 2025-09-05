@@ -25,7 +25,7 @@ public class Ordenador {
     public void burbujaCorrupcion(ArrayList<Candidato> candidatos) {
 
         for (Candidato candidato : candidatos) {
-            ArrayList<Corrupcion> lista = candidato.getCorrupcion(); // ejemplo para edad
+            ArrayList<Corrupcion> lista = candidato.getCorrupcion(); 
             int n = lista.size();
 
             for (int i = 0; i < n - 1; i++) {
@@ -41,32 +41,23 @@ public class Ordenador {
                 }
             }
 
-            candidato.setCorrupcion(lista); // actualizar la lista ordenada
+            candidato.setCorrupcion(lista); 
 
-            // Imprimir la lista ordenada
-            System.out.println("Candidato ID: " + candidato.getId());
-            System.out.println("Lista de Corrupción ordenada:");
-            for (Corrupcion c : lista) {
-                System.out.println(c);
-            }
         }
 
-        System.out.println("Comparaciones: " + comparaciones);
-        System.out.println("Intercambios: " + intercambios);
 
     }
 
     public void BurbujaMarchas(ArrayList<Candidato> candidatos) {
         for (Candidato candidato : candidatos) {
 
-            ArrayList<Marchas> lista = candidato.getMarchas(); // ejemplo para edad
+            ArrayList<Marchas> lista = candidato.getMarchas(); 
             int n = lista.size();
 
             for (int i = 0; i < n - 1; i++) {
                 for (int j = 0; j < n - i - 1; j++) {
                     comparaciones++;
                     if (lista.get(j).getValor() < lista.get(j + 1).getValor()) {
-                        // intercambiar
                         Marchas temp = lista.get(j);
                         lista.set(j, lista.get(j + 1));
                         lista.set(j + 1, temp);
@@ -75,25 +66,17 @@ public class Ordenador {
                 }
             }
 
-            candidato.setMarchas(lista); // actualizar la lista ordenada
+            candidato.setMarchas(lista); 
 
-            // Imprimir la lista ordenada
-            System.out.println("Candidato ID: " + candidato.getId());
-            System.out.println("Lista de marchas ordenada:");
-            for (Marchas c : lista) {
-                System.out.println(c);
-            }
         }
 
-        System.out.println("Comparaciones: " + comparaciones);
-        System.out.println("Intercambios: " + intercambios);
     }
 
     public void BurbujaHorasClase(ArrayList<Candidato> candidatos) {
 
         for (Candidato candidato : candidatos) {
 
-            ArrayList<HorasClase> lista = candidato.getHorasClase(); // ejemplo para edad
+            ArrayList<HorasClase> lista = candidato.getHorasClase(); 
             int n = lista.size();
 
             for (int i = 0; i < n - 1; i++) {
@@ -109,18 +92,11 @@ public class Ordenador {
                 }
             }
 
-            candidato.setHorasClase(lista); // actualizar la lista ordenada
+            candidato.setHorasClase(lista); 
 
-            // Imprimir la lista ordenada
-            System.out.println("Candidato ID: " + candidato.getId());
-            System.out.println("Lista de horas clase ordenada:");
-            for (HorasClase c : lista) {
-                System.out.println(c);
-            }
+
         }
 
-        System.out.println("Comparaciones: " + comparaciones);
-        System.out.println("Intercambios: " + intercambios);
 
     }
 
@@ -128,7 +104,7 @@ public class Ordenador {
 
         for (Candidato candidato : candidatos) {
 
-            ArrayList<Prebendas> lista = candidato.getPrebendas(); // ejemplo para edad
+            ArrayList<Prebendas> lista = candidato.getPrebendas(); 
             int n = lista.size();
 
             for (int i = 0; i < n - 1; i++) {
@@ -144,18 +120,10 @@ public class Ordenador {
                 }
             }
 
-            candidato.setPrebendas(lista); // actualizar la lista ordenada
+            candidato.setPrebendas(lista); 
 
-            // Imprimir la lista ordenada
-            System.out.println("Candidato ID: " + candidato.getId());
-            System.out.println("Lista de prebendas ordenada:");
-            for (Prebendas c : lista) {
-                System.out.println(c);
-            }
         }
 
-        System.out.println("Comparaciones: " + comparaciones);
-        System.out.println("Intercambios: " + intercambios);
 
     }
 
@@ -163,14 +131,13 @@ public class Ordenador {
 
         for (Candidato candidato : candidatos) {
 
-            ArrayList<Sobornos> lista = candidato.getSobornos(); // ejemplo para edad
+            ArrayList<Sobornos> lista = candidato.getSobornos(); 
             int n = lista.size();
 
             for (int i = 0; i < n - 1; i++) {
                 for (int j = 0; j < n - i - 1; j++) {
                     comparaciones++;
                     if (lista.get(j).getValor() < lista.get(j + 1).getValor()) {
-                        // intercambiar
                         Sobornos temp = lista.get(j);
                         lista.set(j, lista.get(j + 1));
                         lista.set(j + 1, temp);
@@ -179,24 +146,14 @@ public class Ordenador {
                 }
             }
 
-            candidato.setSobornos(lista);// actualizar la lista ordenada
+            candidato.setSobornos(lista);
 
-            // Imprimir la lista ordenada
-            System.out.println("Candidato ID: " + candidato.getId());
-            System.out.println("Lista de Sobornos ordenada:");
-            for (Sobornos c : lista) {
-                System.out.println(c);
-            }
         }
 
-        System.out.println("Comparaciones: " + comparaciones);
-        System.out.println("Intercambios: " + intercambios);
 
     }
 
     public void ordenarCandidatosBurbuja(ArrayList<Candidato> candidatos) {
-        // Ordena por primer elemento de CORRUPCIÓN (descendente - mayor corrupción
-        // primero)
         int n = candidatos.size();
         for (int i = 0; i < n - 1; i++) {
             for (int j = 0; j < n - i - 1; j++) {
@@ -204,7 +161,7 @@ public class Ordenador {
                 int corrupcionJ = candidatos.get(j).getCorrupcion().get(0).getValor();
                 int corrupcionJ1 = candidatos.get(j + 1).getCorrupcion().get(0).getValor();
 
-                if (corrupcionJ < corrupcionJ1) { // Orden descendente
+                if (corrupcionJ < corrupcionJ1) { 
                     Candidato temp = candidatos.get(j);
                     candidatos.set(j, candidatos.get(j + 1));
                     candidatos.set(j + 1, temp);
@@ -212,11 +169,9 @@ public class Ordenador {
                 }
             }
         }
-        System.out.println("Candidatos ordenados por CORRUPCIÓN[0] (Burbuja) - Mayor a menor");
     }
 
     public void ordenarCandidatosSeleccion(ArrayList<Candidato> candidatos) {
-        // Ordena por primer elemento de HORAS CLASE (ascendente - menos horas primero)
         int n = candidatos.size();
         for (int i = 0; i < n - 1; i++) {
             int minIdx = i;
@@ -225,11 +180,10 @@ public class Ordenador {
                 int horasMin = candidatos.get(minIdx).getHorasClase().get(0).getValor();
                 int horasJ = candidatos.get(j).getHorasClase().get(0).getValor();
 
-                if (horasJ < horasMin) { // Orden ascendente
+                if (horasJ < horasMin) { 
                     minIdx = j;
                 }
             }
-            // intercambiar
             if (minIdx != i) {
                 Candidato temp = candidatos.get(i);
                 candidatos.set(i, candidatos.get(minIdx));
@@ -237,11 +191,9 @@ public class Ordenador {
                 intercambios++;
             }
         }
-        System.out.println("Candidatos ordenados por HORAS CLASE[0] (Selección) - Menor a mayor");
     }
 
     public void ordenarCandidatosInsercion(ArrayList<Candidato> candidatos) {
-        // Ordena por primer elemento de MARCHAS (ascendente - menos marchas primero)
         int n = candidatos.size();
         for (int i = 1; i < n; i++) {
             Candidato key = candidatos.get(i);
@@ -261,11 +213,9 @@ public class Ordenador {
             }
             candidatos.set(j + 1, key);
         }
-        System.out.println("Candidatos ordenados por MARCHAS[0] (Inserción) - Menor a mayor");
     }
 
     public void ordenarCandidatosMergeSort(ArrayList<Candidato> candidatos) {
-        // Ordena por primer elemento de PREBENDAS (descendente - más prebendas primero)
         if (candidatos.size() < 2) {
             return;
         }
@@ -277,7 +227,6 @@ public class Ordenador {
         ordenarCandidatosMergeSort(right);
 
         mergePrebendas(candidatos, left, right);
-        System.out.println("Candidatos ordenados por PREBENDAS[0] (MergeSort) - Mayor a menor");
     }
 
     private void mergePrebendas(ArrayList<Candidato> candidatos, ArrayList<Candidato> left,
@@ -288,7 +237,7 @@ public class Ordenador {
             int prebendasLeft = left.get(i).getPrebendas().get(0).getValor();
             int prebendasRight = right.get(j).getPrebendas().get(0).getValor();
 
-            if (prebendasLeft >= prebendasRight) { // Orden descendente
+            if (prebendasLeft >= prebendasRight) { 
                 candidatos.set(k++, left.get(i++));
             } else {
                 candidatos.set(k++, right.get(j++));
@@ -306,9 +255,7 @@ public class Ordenador {
     }
 
     public void ordenarCandidatosQuickSort(ArrayList<Candidato> candidatos) {
-        // Ordena por primer elemento de SOBORNOS (ascendente - menos sobornos primero)
         quickSortSobornos(candidatos, 0, candidatos.size() - 1);
-        System.out.println("Candidatos ordenados por SOBORNOS[0] (QuickSort) - Menor a mayor");
     }
 
     private void quickSortSobornos(ArrayList<Candidato> candidatos, int low, int high) {
@@ -329,14 +276,12 @@ public class Ordenador {
             int sobornosJ = candidatos.get(j).getSobornos().get(0).getValor();
             if (sobornosJ <= sobornosPivot) { // Orden ascendente
                 i++;
-                // intercambiar
                 Candidato temp = candidatos.get(i);
                 candidatos.set(i, candidatos.get(j));
                 candidatos.set(j, temp);
                 intercambios++;
             }
         }
-        // intercambiar
         Candidato temp = candidatos.get(i + 1);
         candidatos.set(i + 1, candidatos.get(high));
         candidatos.set(high, temp);
@@ -344,7 +289,6 @@ public class Ordenador {
         return i + 1;
     }
 
-    // Getters para comparaciones e intercambios
     public long getComparaciones() {
         return comparaciones;
     }
