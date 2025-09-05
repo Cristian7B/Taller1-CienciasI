@@ -4,10 +4,44 @@
  */
 package co.edu.udistrital.taller1.model;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author crisc
  */
 public class Candidato {
+
+    private final int id;
+    private final ArrayList<Marchas> marchas;
+    private final ArrayList<HorasClase> horasClase;
+    private final ArrayList<Prebendas> prebendas;
+    private final ArrayList<Sobornos> sobornos;
+    private final ArrayList<Corrupcion> corrupcion;
+
+    public Candidato(int id, int m) {
+        this.id = id;
+        this.marchas = new ArrayList<>(m);
+        this.horasClase = new ArrayList<>(m);
+        this.prebendas = new ArrayList<>(m);
+        this.sobornos = new ArrayList<>(m);
+        this.corrupcion = new ArrayList<>(m);
+    }
+
+    public void agregarMarcha(String desc, int valor) { marchas.add(new Marchas(desc, valor)); }
+    public void agregarHoras(String desc, int valor) { horasClase.add(new HorasClase(desc, valor)); }
+    public void agregarPrebenda(String desc, int valor) { prebendas.add(new Prebendas(desc, valor)); }
+    public void agregarSoborno(String desc, int valor) { sobornos.add(new Sobornos(desc, valor)); }
+    public void agregarCorrupcion(String desc, int valor) { corrupcion.add(new Corrupcion(desc, valor)); }
+
+    @Override
+    public String toString() {
+        return "Candidato " + id +
+        "\n  Marchas=" + marchas +
+        "\n  HorasClase=" + horasClase +
+        "\n  Prebendas=" + prebendas +
+        "\n  Sobornos=" + sobornos +
+        "\n  Corrupcion=" + corrupcion;
+    }
         
 }
