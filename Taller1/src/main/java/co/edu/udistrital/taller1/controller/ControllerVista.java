@@ -11,11 +11,13 @@ import co.edu.udistrital.taller1.view.VentanaPrincipal;
 public class ControllerVista implements ActionListener{
     private final Controller controller;
     private final VentanaPrincipal ventanaPrincipal;
+
     private double tiempo;
 
     public ControllerVista(Controller controller) {
         this.controller = controller;
         this.ventanaPrincipal = new VentanaPrincipal(this);
+        
         ventanaPrincipal.setVisible(true);
         asignarOyentes();
     }
@@ -27,16 +29,22 @@ public class ControllerVista implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        String comando = e.getActionCommand();
+        String comando = e.getActionCommand();  
+
         if (comando.equals("Generar y Ordenar")) {
             if (validarElementos()) {
                 String algoritmo = obtenerAlgoritmo();
+
                 ventanaPrincipal.mostrarMensaje(obtenerDistribucion());
                 controller.generarElementos(obtenerN(), obtenerM());
                 tiempo = controller.ordenarElementos(algoritmo);
+                
                 long comparaciones = controller.getControllerDirectorio().getControllerCandidato().getComparaciones();
-                Long intercambios = controller.getControllerDirectorio().getControllerCandidato().getIntercambios();
+                long intercambios = controller.getControllerDirectorio().getControllerCandidato().getIntercambios();
+               
                 mostrarResultado(algoritmo, comparaciones, intercambios, (long) tiempo);
+               
+                controller.getControllerDirectorio().getControllerCandidato().resetContadores();
             } else {
                 ventanaPrincipal.mostrarMensaje("Por favor, ingrese valores válidos.");
             }
@@ -44,8 +52,8 @@ public class ControllerVista implements ActionListener{
     }
 
     public void mostrarResultado(String algoritmo, long comparaciones, long intercambios, long tiempo) {
-    ventanaPrincipal.agregarResultado(algoritmo, comparaciones, intercambios, tiempo);
-}
+        ventanaPrincipal.agregarResultado(algoritmo, comparaciones, intercambios, tiempo);
+    }
 
     public boolean validarElementos() {
         return obtenerN() > 0 && obtenerM() > 0;

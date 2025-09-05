@@ -19,7 +19,6 @@ public class Controller {
 
     public void generarElementos(int N, int M) {
         try {
-            // Obtener la distribución seleccionada por el usuario
             String distribucion = controllerVista.obtenerDistribucion();
 
             controllerVista.getVentanaPrincipal()
@@ -29,7 +28,7 @@ public class Controller {
             controllerDirectorio.limpiarDirectorio();
             controllerDirectorio.generarPoblacion(N, M, distribucion);
             controllerVista.getVentanaPrincipal().mostrarMensaje("Generación completada. Total candidatos: " +
-            controllerDirectorio.obtenerTamañoDirectorio());
+                controllerDirectorio.obtenerTamañoDirectorio());
 
         } catch (Exception e) {
             controllerVista.getVentanaPrincipal().mostrarMensaje("Error al generar elementos: " + e.getMessage());

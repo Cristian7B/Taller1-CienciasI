@@ -36,39 +36,6 @@ public class ControllerDirectorio {
     }
 
     /**
-     * Genera una población de candidatos y los agrega al directorio (versión de
-     * compatibilidad)
-     * 
-     * @param n Número de candidatos a generar
-     * @param m Número de elementos por categoría
-     */
-    public void generarPoblacion(int n, int m) {
-        generarPoblacion(n, m, "uniforme");
-    }
-
-    /**
-     * Agrega un candidato individual al directorio
-     * 
-     * @param id           ID del candidato
-     * @param m            Número de elementos por categoría
-     * @param distribucion Tipo de distribución para los valores
-     */
-    public void agregarCandidato(int id, int m, String distribucion) {
-        Candidato candidato = controllerCandidato.generarCandidato(id, m, distribucion);
-        directorio.agregarCandidato(candidato);
-    }
-
-    /**
-     * Agrega un candidato individual al directorio (versión de compatibilidad)
-     * 
-     * @param id ID del candidato
-     * @param m  Número de elementos por categoría
-     */
-    public void agregarCandidato(int id, int m) {
-        agregarCandidato(id, m, "uniforme");
-    }
-
-    /**
      * Ordena los candidatos en el directorio según el comparador dado
      * 
      * @param comparador Criterio de ordenamiento
@@ -78,8 +45,8 @@ public class ControllerDirectorio {
 
         switch (comparador.toLowerCase()) {
             case "burbuja" -> tiempo = controllerCandidato.ordenarBurbuja(directorio.getCandidatos());
-            case "seleccion" -> tiempo = controllerCandidato.ordenarSeleccion(directorio.getCandidatos());
-            case "insercion" -> tiempo = controllerCandidato.ordenarInsercion(directorio.getCandidatos());
+            case "selección" -> tiempo = controllerCandidato.ordenarSeleccion(directorio.getCandidatos());
+            case "inserción" -> tiempo = controllerCandidato.ordenarInsercion(directorio.getCandidatos());
             case "mergesort" -> tiempo = controllerCandidato.ordenarMergeSort(directorio.getCandidatos());
             case "quicksort" -> tiempo = controllerCandidato.ordenarQuickSort(directorio.getCandidatos());
             default -> throw new IllegalArgumentException("Algoritmo de ordenamiento no reconocido: " + comparador);
@@ -122,9 +89,11 @@ public class ControllerDirectorio {
         return directorio;
     }
 
-    /// Obtener el controlador de candidatos
-    /// @return ControllerCandidato
-    public ControllerCandidato getControllerCandidato() {
+    /**
+     * Obtiene el controlador de directorio
+     * @return ControllerCandidato
+     */
+     public ControllerCandidato getControllerCandidato() {
         return controllerCandidato;
     }
 }
