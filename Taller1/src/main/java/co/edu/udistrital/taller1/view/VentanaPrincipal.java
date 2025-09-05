@@ -14,6 +14,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -21,6 +22,7 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 import co.edu.udistrital.taller1.controller.Controller;
+import co.edu.udistrital.taller1.controller.ControllerVista;
 /**
  *
  * @author crisc
@@ -36,9 +38,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private final JButton btnEjecutar;
     private final JTable tablaResultados;
     private final DefaultTableModel modeloTabla;
-    
-    public VentanaPrincipal(Controller controller) {
+    private ControllerVista controllerVista;
 
+    public VentanaPrincipal(ControllerVista controllerVista) {
+        this.controllerVista = controllerVista;
 
         setTitle("Comparación de Algoritmos de Ordenamiento");
         setSize(900, 600);
@@ -109,7 +112,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         panel.add(scroll, BorderLayout.SOUTH);
     }
 
-    // Métodos para el controlador
+    public void mostrarMensaje(String mensaje) {
+        JOptionPane.showMessageDialog(this, mensaje);
+    }
+
     public String getN() { return txtN.getText(); }
     public String getM() { return txtM.getText(); }
     public String getAlgoritmo() { return (String) cmbAlgoritmo.getSelectedItem(); }

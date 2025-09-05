@@ -28,20 +28,59 @@ public class Candidato {
         this.corrupcion = new ArrayList<>(m);
     }
 
-    public void agregarMarcha(String desc, int valor) { marchas.add(new Marchas(desc, valor)); }
-    public void agregarHoras(String desc, int valor) { horasClase.add(new HorasClase(desc, valor)); }
-    public void agregarPrebenda(String desc, int valor) { prebendas.add(new Prebendas(desc, valor)); }
-    public void agregarSoborno(String desc, int valor) { sobornos.add(new Sobornos(desc, valor)); }
-    public void agregarCorrupcion(String desc, int valor) { corrupcion.add(new Corrupcion(desc, valor)); }
+    public void agregarMarcha(String desc, int valor) {
+        marchas.add(new Marchas(desc, valor));
+    }
+
+    public void agregarHoras(String desc, int valor) {
+        horasClase.add(new HorasClase(desc, valor));
+    }
+
+    public void agregarPrebenda(String desc, int valor) {
+        prebendas.add(new Prebendas(desc, valor));
+    }
+
+    public void agregarSoborno(String desc, int valor) {
+        sobornos.add(new Sobornos(desc, valor));
+    }
+
+    public void agregarCorrupcion(String desc, int valor) {
+        corrupcion.add(new Corrupcion(desc, valor));
+    }
+
+    // Getters
+    public int getId() {
+        return id;
+    }
+
+    public ArrayList<Marchas> getMarchas() {
+        return new ArrayList<>(marchas);
+    }
+
+    public ArrayList<HorasClase> getHorasClase() {
+        return new ArrayList<>(horasClase);
+    }
+
+    public ArrayList<Prebendas> getPrebendas() {
+        return new ArrayList<>(prebendas);
+    }
+
+    public ArrayList<Sobornos> getSobornos() {
+        return new ArrayList<>(sobornos);
+    }
+
+    public ArrayList<Corrupcion> getCorrupcion() {
+        return new ArrayList<>(corrupcion);
+    }
 
     @Override
     public String toString() {
         return "Candidato " + id +
-        "\n  Marchas=" + marchas +
-        "\n  HorasClase=" + horasClase +
-        "\n  Prebendas=" + prebendas +
-        "\n  Sobornos=" + sobornos +
-        "\n  Corrupcion=" + corrupcion;
+                "\n  Marchas=" + marchas +
+                "\n  HorasClase=" + horasClase +
+                "\n  Prebendas=" + prebendas +
+                "\n  Sobornos=" + sobornos +
+                "\n  Corrupcion=" + corrupcion;
     }
-        
+
 }
