@@ -160,4 +160,98 @@ public class ControllerCandidato {
         }
         return poblacion;
     }
+
+    /**
+     * Genera una población de candidatos (versión de compatibilidad - usa
+     * distribución uniforme)
+     * 
+     * @param n Número de candidatos a generar
+     * @param m Número de elementos por categoría para cada candidato
+     * @return Lista de candidatos generados
+     */
+    public ArrayList<Candidato> generarPoblacionCandidatos(int n, int m) {
+        return generarPoblacionCandidatos(n, m, "uniforme");
+    }
+
+    /**
+     * Ordena una lista de candidatos usando el algoritmo de burbuja
+     * 
+     * @param candidatos Lista de candidatos a ordenar
+     */
+    public double ordenarBurbuja(ArrayList<Candidato> candidatos) {
+        long inicio = System.nanoTime();
+        ordenador.burbujaCorrupcion(candidatos);
+        ordenador.BurbujaMarchas(candidatos);
+        ordenador.BurbujaHorasClase(candidatos);
+        ordenador.BurbujaPrebendas(candidatos);
+        ordenador.BurbujaSobornos(candidatos);
+        long fin = System.nanoTime();
+        return (fin - inicio) / 1_000_000.0; // retorna el tiempo en ms
+    } 
+    
+    /**
+     * Ordena una lista de candidatos usando el algoritmo de selección
+     * 
+     * @param candidatos Lista de candidatos a ordenar
+     */
+
+    public double ordenarSeleccion(ArrayList<Candidato> candidatos) {
+        long inicio = System.nanoTime();
+        //ordenador.ordenarSeleccion(candidatos);
+        long fin = System.nanoTime();
+        return (fin - inicio) / 1_000_000.0; // retorna el tiempo en ms
+
+        
+    }
+
+    /**
+     * Ordena una lista de candidatos usando el algoritmo de inserción
+     * 
+     * @param candidatos Lista de candidatos a ordenar
+     */
+    public double ordenarInsercion(ArrayList<Candidato> candidatos) {
+        long inicio = System.nanoTime();
+        //ordenador.ordenarInsercion(candidatos);
+        long fin = System.nanoTime();
+        return (fin - inicio) / 1_000_000.0; // retorna el tiempo en ms
+    }
+
+    /**
+     * Ordena una lista de candidatos usando el algoritmo Merge Sort
+     * 
+     * @param candidatos Lista de candidatos a ordenar
+     */
+
+    public double ordenarMergeSort(ArrayList<Candidato> candidatos) {
+
+        long inicio = System.nanoTime();
+        //ordenador.ordenarMergeSort(candidatos);
+        long fin = System.nanoTime();
+        return (fin - inicio) / 1_000_000.0; // retorna el tiempo en ms
+
+    }
+
+    /**
+     * Ordena una lista de candidatos usando el algoritmo Quick Sort
+     * 
+     * @param candidatos Lista de candidatos a ordenar
+     */
+    public double ordenarQuickSort(ArrayList<Candidato> candidatos) {
+
+        long inicio = System.nanoTime();
+        //ordenador.ordenarQuickSort(candidatos);
+        long fin = System.nanoTime();
+        return (fin - inicio) / 1_000_000.0; // retorna el tiempo en ms
+
+    }
+
+
+    public long getComparaciones() {
+        return ordenador.getComparaciones();
+    }
+
+    public long getIntercambios() {
+        return ordenador.getIntercambios();
+    }
+
 }

@@ -36,14 +36,16 @@ public class Controller {
         }
     }
 
-    public void ordenarElementos(String algoritmo) {
+    public double ordenarElementos(String algoritmo) {
         try {
-            controllerDirectorio.ordenarCandidatos(algoritmo);
+            double tiempo = controllerDirectorio.ordenarCandidatos(algoritmo);
             controllerVista.getVentanaPrincipal().mostrarMensaje("Candidatos ordenados correctamente. usando: " + algoritmo );
+            return tiempo;
 
         } catch (Exception e) {
             controllerVista.getVentanaPrincipal().mostrarMensaje("Error al ordenar elementos: " + e.getMessage());
         }
+        return -1;
     }
 
     /**

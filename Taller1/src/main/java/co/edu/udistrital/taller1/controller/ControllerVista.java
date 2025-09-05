@@ -11,6 +11,7 @@ import co.edu.udistrital.taller1.view.VentanaPrincipal;
 public class ControllerVista implements ActionListener{
     private final Controller controller;
     private final VentanaPrincipal ventanaPrincipal;
+    private double tiempo;
 
     public ControllerVista(Controller controller) {
         this.controller = controller;
@@ -32,12 +33,19 @@ public class ControllerVista implements ActionListener{
                 String algoritmo = obtenerAlgoritmo();
                 ventanaPrincipal.mostrarMensaje(obtenerDistribucion());
                 controller.generarElementos(obtenerN(), obtenerM());
-                controller.ordenarElementos(algoritmo);
+                tiempo = controller.ordenarElementos(algoritmo);
+                long comparaciones = controller.getControllerDirectorio().getControllerCandidato().getComparaciones();
+                Long intercambios = controller.getControllerDirectorio().getControllerCandidato().getIntercambios();
+                mostrarResultado(algoritmo, comparaciones, intercambios, (long) tiempo);
             } else {
                 ventanaPrincipal.mostrarMensaje("Por favor, ingrese valores válidos.");
             }
         }
     }
+
+    public void mostrarResultado(String algoritmo, long comparaciones, long intercambios, long tiempo) {
+    ventanaPrincipal.agregarResultado(algoritmo, comparaciones, intercambios, tiempo);
+}
 
     public boolean validarElementos() {
         return obtenerN() > 0 && obtenerM() > 0;
@@ -71,6 +79,10 @@ public class ControllerVista implements ActionListener{
 
     public Controller getController() {
         return controller;
+    }
+
+    public double getTiempo() {
+        return tiempo;
     }
 
 

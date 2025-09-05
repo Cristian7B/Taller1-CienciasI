@@ -73,16 +73,18 @@ public class ControllerDirectorio {
      * 
      * @param comparador Criterio de ordenamiento
      */
-    public void ordenarCandidatos(String comparador) {
+    public double ordenarCandidatos(String comparador) {
+        double tiempo = 0;
 
         switch (comparador.toLowerCase()) {
-            case "burbuja" -> controllerCandidato.ordenarBurbujaPorAtributo(directorio.getCandidatos());
-            case "seleccion" -> controllerCandidato.ordenarSeleccion(directorio.getCandidatos());
-            case "insercion" -> controllerCandidato.ordenarInsercion(directorio.getCandidatos());
-            case "mergesort" -> controllerCandidato.ordenarMergeSort(directorio.getCandidatos());
-            case "quicksort" -> controllerCandidato.ordenarQuickSort(directorio.getCandidatos());
+            case "burbuja" -> tiempo = controllerCandidato.ordenarBurbuja(directorio.getCandidatos());
+            case "seleccion" -> tiempo = controllerCandidato.ordenarSeleccion(directorio.getCandidatos());
+            case "insercion" -> tiempo = controllerCandidato.ordenarInsercion(directorio.getCandidatos());
+            case "mergesort" -> tiempo = controllerCandidato.ordenarMergeSort(directorio.getCandidatos());
+            case "quicksort" -> tiempo = controllerCandidato.ordenarQuickSort(directorio.getCandidatos());
             default -> throw new IllegalArgumentException("Algoritmo de ordenamiento no reconocido: " + comparador);
         }
+        return tiempo;
     }
 
 
@@ -118,5 +120,11 @@ public class ControllerDirectorio {
      */
     public Directorio getDirectorio() {
         return directorio;
+    }
+
+    /// Obtener el controlador de candidatos
+    /// @return ControllerCandidato
+    public ControllerCandidato getControllerCandidato() {
+        return controllerCandidato;
     }
 }
