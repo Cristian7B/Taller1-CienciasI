@@ -7,7 +7,9 @@ package co.edu.udistrital.taller1.controller;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
+
 import co.edu.udistrital.taller1.model.Candidato;
+
 
 /**
  *
@@ -15,10 +17,14 @@ import co.edu.udistrital.taller1.model.Candidato;
  */
 public class ControllerCandidato {
 
+    
+
     private final Random random;
+    private final Ordenador ordenador;
 
     public ControllerCandidato(long semilla) {
         this.random = new Random(semilla);
+        this.ordenador = new Ordenador();
     }
 
     /**
@@ -62,20 +68,12 @@ public class ControllerCandidato {
     private ArrayList<Integer> generarValoresSegunDistribucion(int m, String distribucion) {
         ArrayList<Integer> valores = new ArrayList<>();
 
-        switch (distribucion.toLowerCase()) {
-            case "aleatoria":
-                valores = generarDistribucionUniforme(m);
-                break;
-            case "casi ordenada":
-                valores = generarDistribucionCasiOrdenada(m);
-                break;
-            case "inversa":
-                valores = generarDistribucionInversa(m);
-                break;
-            default:
-                valores = generarDistribucionUniforme(m);
-                break;
-        }
+        valores = switch (distribucion.toLowerCase()) {
+            case "aleatoria" -> generarDistribucionUniforme(m);
+            case "casi ordenada" -> generarDistribucionCasiOrdenada(m);
+            case "inversa" -> generarDistribucionInversa(m);
+            default -> generarDistribucionUniforme(m);
+        };
 
         return valores;
     }
@@ -167,4 +165,88 @@ public class ControllerCandidato {
     public ArrayList<Candidato> generarPoblacionCandidatos(int n, int m) {
         return generarPoblacionCandidatos(n, m, "uniforme");
     }
+
+    /**
+     * Ordena una lista de candidatos usando el algoritmo de burbuja
+     * 
+     * @param candidatos Lista de candidatos a ordenar
+     */
+    public double ordenarBurbujaPorAtributo(ArrayList<Candidato> candidatos) {
+        long inicio = System.nanoTime();
+        ordenador.burbujaCorrupcion(candidatos);
+        ordenador.BurbujaMarchas(candidatos);
+        ordenador.BurbujaHorasClase(candidatos);
+        ordenador.BurbujaPrebendas(candidatos);
+        ordenador.BurbujaSobornos(candidatos);
+
+        System.out.println("Candidatos ordenados:");
+        for(Candidato c: candidatos){
+            System.out.println(c);
+        }
+        System.out.println("Comparaciones: " + ordenador.getComparaciones());
+        System.out.println("Intercambios: " + ordenador.getIntercambios());
+        long fin = System.nanoTime();
+        return (fin - inicio) / 1_000_000.0; // retorna el tiempo en ms
+    } 
+    
+    /**
+     * Ordena una lista de candidatos usando el algoritmo de selección
+     * 
+     * @param candidatos Lista de candidatos a ordenar
+     */
+
+    public void ordenarSeleccion(ArrayList<Candidato> candidatos) {
+        int n = candidatos.size();
+
+        for (Candidato candidato : candidatos) {
+            for (int i = 0; i < n - 1; i++) {
+                int minIdx = i;
+                for (int j = i + 1; j < n; j++) {
+                    if (true) {
+                        minIdx = j;
+                    }
+                }
+                // Intercambiar
+            }
+        }
+    }
+
+    /**
+     * Ordena una lista de candidatos usando el algoritmo de inserción
+     * 
+     * @param candidatos Lista de candidatos a ordenar
+     */
+    public void ordenarInsercion(ArrayList<Candidato> candidatos) {
+        int n = candidatos.size();
+
+        for (Candidato candidato : candidatos) {
+            for (int i = 1; i < n; i++) {
+                Candidato key = candidato;
+                int j = i - 1;
+
+                while (j >= 0 && true) {
+                    j--;
+                }
+                // Insertar key en la posición correcta
+            }
+        }
+    }
+
+    /**
+     * Ordena una lista de candidatos usando el algoritmo Merge Sort
+     * 
+     * @param candidatos Lista de candidatos a ordenar
+     */
+
+    public void ordenarMergeSort(ArrayList<Candidato> candidatos) {
+
+    }
+
+    /**
+     * Ordena una lista de candidatos usando el algoritmo Quick Sort
+     * 
+     * @param candidatos Lista de candidatos a ordenar
+     */
+    public void ordenarQuickSort(ArrayList<Candidato> candidatos) {}
+
 }

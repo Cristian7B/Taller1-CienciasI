@@ -4,15 +4,13 @@
  */
 package co.edu.udistrital.taller1.controller;
 
-import co.edu.udistrital.taller1.model.Candidato;
-
 /**
  *
  * @author crisc
  */
 public class Controller {
-    private ControllerVista controllerVista;
-    private ControllerDirectorio controllerDirectorio;
+    private final ControllerVista controllerVista;
+    private final ControllerDirectorio controllerDirectorio;
 
     public Controller() {
         this.controllerVista = new ControllerVista(this);
@@ -31,20 +29,17 @@ public class Controller {
             controllerDirectorio.limpiarDirectorio();
             controllerDirectorio.generarPoblacion(N, M, distribucion);
             controllerVista.getVentanaPrincipal().mostrarMensaje("Generación completada. Total candidatos: " +
-                    controllerDirectorio.obtenerTamañoDirectorio());
-
-            for (Candidato c : controllerDirectorio.getDirectorio().getCandidatos()) {
-                System.out.println(c);
-            }
+            controllerDirectorio.obtenerTamañoDirectorio());
 
         } catch (Exception e) {
             controllerVista.getVentanaPrincipal().mostrarMensaje("Error al generar elementos: " + e.getMessage());
         }
     }
 
-    public void ordenarElementos() {
+    public void ordenarElementos(String algoritmo) {
         try {
-            controllerVista.getVentanaPrincipal().mostrarMensaje("Candidatos ordenados correctamente.");
+            controllerDirectorio.ordenarCandidatos(algoritmo);
+            controllerVista.getVentanaPrincipal().mostrarMensaje("Candidatos ordenados correctamente. usando: " + algoritmo );
 
         } catch (Exception e) {
             controllerVista.getVentanaPrincipal().mostrarMensaje("Error al ordenar elementos: " + e.getMessage());

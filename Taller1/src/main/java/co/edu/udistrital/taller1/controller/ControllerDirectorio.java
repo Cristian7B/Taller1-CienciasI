@@ -5,6 +5,7 @@
 package co.edu.udistrital.taller1.controller;
 
 import java.util.ArrayList;
+
 import co.edu.udistrital.taller1.model.Candidato;
 import co.edu.udistrital.taller1.model.Directorio;
 
@@ -14,8 +15,8 @@ import co.edu.udistrital.taller1.model.Directorio;
  */
 public class ControllerDirectorio {
 
-    private Directorio directorio;
-    private ControllerCandidato controllerCandidato;
+    private final Directorio directorio;
+    private final ControllerCandidato controllerCandidato;
 
     public ControllerDirectorio(long semilla) {
         this.directorio = new Directorio();
@@ -72,8 +73,18 @@ public class ControllerDirectorio {
      * 
      * @param comparador Criterio de ordenamiento
      */
-    public void ordenarCandidatos() {
+    public void ordenarCandidatos(String comparador) {
+
+        switch (comparador.toLowerCase()) {
+            case "burbuja" -> controllerCandidato.ordenarBurbujaPorAtributo(directorio.getCandidatos());
+            case "seleccion" -> controllerCandidato.ordenarSeleccion(directorio.getCandidatos());
+            case "insercion" -> controllerCandidato.ordenarInsercion(directorio.getCandidatos());
+            case "mergesort" -> controllerCandidato.ordenarMergeSort(directorio.getCandidatos());
+            case "quicksort" -> controllerCandidato.ordenarQuickSort(directorio.getCandidatos());
+            default -> throw new IllegalArgumentException("Algoritmo de ordenamiento no reconocido: " + comparador);
+        }
     }
+
 
     /**
      * Obtiene todos los candidatos del directorio
