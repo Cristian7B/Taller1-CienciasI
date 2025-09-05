@@ -13,6 +13,7 @@ public class ControllerVista implements ActionListener{
         this.controller = controller;
         this.ventanaPrincipal = new VentanaPrincipal(this);
         ventanaPrincipal.setVisible(true);
+        asignarOyentes();
     }
 
     public void asignarOyentes() {
@@ -24,27 +25,30 @@ public class ControllerVista implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         String comando = e.getActionCommand();
         if (comando.equals("Generar y Ordenar")) {
-            ventanaPrincipal.mostrarMensaje("Generando y ordenando elementos...");
-            controller.generarElementos(obtenerN(), obtenerM());
-            controller.ordenarElementos();
+            if (validarElementos()) {
+                controller.generarElementos(obtenerN(), obtenerM());
+                controller.ordenarElementos();
+            } else {
+                ventanaPrincipal.mostrarMensaje("Por favor, ingrese valores válidos.");
+            }
         }
+    }
+
+    public boolean validarElementos() {
+        return obtenerN() > 0 && obtenerM() > 0;
     }
 
     public int obtenerN() {
         try {
             return Integer.parseInt(ventanaPrincipal.getN());
-        } catch (NumberFormatException e) {
-            ventanaPrincipal.mostrarMensaje("Por favor, ingrese un número válido.");
-        }
+        } catch (NumberFormatException e) {}
         return 0;
     }
 
     public int obtenerM() {
         try {
             return Integer.parseInt(ventanaPrincipal.getM());
-        } catch (NumberFormatException e) {
-            ventanaPrincipal.mostrarMensaje("Por favor, ingrese un número válido.");
-        }
+        } catch (NumberFormatException e) {}
         return 0;
     }
 
