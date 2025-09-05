@@ -171,20 +171,13 @@ public class ControllerCandidato {
      * 
      * @param candidatos Lista de candidatos a ordenar
      */
-    public double ordenarBurbujaPorAtributo(ArrayList<Candidato> candidatos) {
+    public double ordenarBurbuja(ArrayList<Candidato> candidatos) {
         long inicio = System.nanoTime();
         ordenador.burbujaCorrupcion(candidatos);
         ordenador.BurbujaMarchas(candidatos);
         ordenador.BurbujaHorasClase(candidatos);
         ordenador.BurbujaPrebendas(candidatos);
         ordenador.BurbujaSobornos(candidatos);
-
-        System.out.println("Candidatos ordenados:");
-        for(Candidato c: candidatos){
-            System.out.println(c);
-        }
-        System.out.println("Comparaciones: " + ordenador.getComparaciones());
-        System.out.println("Intercambios: " + ordenador.getIntercambios());
         long fin = System.nanoTime();
         return (fin - inicio) / 1_000_000.0; // retorna el tiempo en ms
     } 
@@ -195,20 +188,13 @@ public class ControllerCandidato {
      * @param candidatos Lista de candidatos a ordenar
      */
 
-    public void ordenarSeleccion(ArrayList<Candidato> candidatos) {
-        int n = candidatos.size();
+    public double ordenarSeleccion(ArrayList<Candidato> candidatos) {
+        long inicio = System.nanoTime();
+        //ordenador.ordenarSeleccion(candidatos);
+        long fin = System.nanoTime();
+        return (fin - inicio) / 1_000_000.0; // retorna el tiempo en ms
 
-        for (Candidato candidato : candidatos) {
-            for (int i = 0; i < n - 1; i++) {
-                int minIdx = i;
-                for (int j = i + 1; j < n; j++) {
-                    if (true) {
-                        minIdx = j;
-                    }
-                }
-                // Intercambiar
-            }
-        }
+        
     }
 
     /**
@@ -216,20 +202,11 @@ public class ControllerCandidato {
      * 
      * @param candidatos Lista de candidatos a ordenar
      */
-    public void ordenarInsercion(ArrayList<Candidato> candidatos) {
-        int n = candidatos.size();
-
-        for (Candidato candidato : candidatos) {
-            for (int i = 1; i < n; i++) {
-                Candidato key = candidato;
-                int j = i - 1;
-
-                while (j >= 0 && true) {
-                    j--;
-                }
-                // Insertar key en la posición correcta
-            }
-        }
+    public double ordenarInsercion(ArrayList<Candidato> candidatos) {
+        long inicio = System.nanoTime();
+        //ordenador.ordenarInsercion(candidatos);
+        long fin = System.nanoTime();
+        return (fin - inicio) / 1_000_000.0; // retorna el tiempo en ms
     }
 
     /**
@@ -238,7 +215,12 @@ public class ControllerCandidato {
      * @param candidatos Lista de candidatos a ordenar
      */
 
-    public void ordenarMergeSort(ArrayList<Candidato> candidatos) {
+    public double ordenarMergeSort(ArrayList<Candidato> candidatos) {
+
+        long inicio = System.nanoTime();
+        //ordenador.ordenarMergeSort(candidatos);
+        long fin = System.nanoTime();
+        return (fin - inicio) / 1_000_000.0; // retorna el tiempo en ms
 
     }
 
@@ -247,6 +229,22 @@ public class ControllerCandidato {
      * 
      * @param candidatos Lista de candidatos a ordenar
      */
-    public void ordenarQuickSort(ArrayList<Candidato> candidatos) {}
+    public double ordenarQuickSort(ArrayList<Candidato> candidatos) {
+
+        long inicio = System.nanoTime();
+        //ordenador.ordenarQuickSort(candidatos);
+        long fin = System.nanoTime();
+        return (fin - inicio) / 1_000_000.0; // retorna el tiempo en ms
+
+    }
+
+
+    public long getComparaciones() {
+        return ordenador.getComparaciones();
+    }
+
+    public long getIntercambios() {
+        return ordenador.getIntercambios();
+    }
 
 }
