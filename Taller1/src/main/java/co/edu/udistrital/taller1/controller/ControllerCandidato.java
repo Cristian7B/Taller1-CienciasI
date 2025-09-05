@@ -62,14 +62,14 @@ public class ControllerCandidato {
     private ArrayList<Integer> generarValoresSegunDistribucion(int m, String distribucion) {
         ArrayList<Integer> valores = new ArrayList<>();
 
-        switch (distribucion.toLowerCase()) {
-            case "aleatoria":
+        switch (distribucion) {
+            case "Aleatoria":
                 valores = generarDistribucionUniforme(m);
                 break;
-            case "casi ordenada":
+            case "Casi ordenada":
                 valores = generarDistribucionCasiOrdenada(m);
                 break;
-            case "inversa":
+            case "Inversa":
                 valores = generarDistribucionInversa(m);
                 break;
             default:
@@ -154,17 +154,5 @@ public class ControllerCandidato {
             poblacion.add(generarCandidato(i, m, distribucion));
         }
         return poblacion;
-    }
-
-    /**
-     * Genera una población de candidatos (versión de compatibilidad - usa
-     * distribución uniforme)
-     * 
-     * @param n Número de candidatos a generar
-     * @param m Número de elementos por categoría para cada candidato
-     * @return Lista de candidatos generados
-     */
-    public ArrayList<Candidato> generarPoblacionCandidatos(int n, int m) {
-        return generarPoblacionCandidatos(n, m, "uniforme");
     }
 }
