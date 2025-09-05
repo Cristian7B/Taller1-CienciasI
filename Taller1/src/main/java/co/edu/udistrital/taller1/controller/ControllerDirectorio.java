@@ -25,23 +25,46 @@ public class ControllerDirectorio {
     /**
      * Genera una población de candidatos y los agrega al directorio
      * 
+     * @param n            Número de candidatos a generar
+     * @param m            Número de elementos por categoría
+     * @param distribucion Tipo de distribución para los valores
+     */
+    public void generarPoblacion(int n, int m, String distribucion) {
+        ArrayList<Candidato> candidatos = controllerCandidato.generarPoblacionCandidatos(n, m, distribucion);
+        directorio.agregarCandidatos(candidatos);
+    }
+
+    /**
+     * Genera una población de candidatos y los agrega al directorio (versión de
+     * compatibilidad)
+     * 
      * @param n Número de candidatos a generar
      * @param m Número de elementos por categoría
      */
     public void generarPoblacion(int n, int m) {
-        ArrayList<Candidato> candidatos = controllerCandidato.generarPoblacionCandidatos(n, m);
-        directorio.agregarCandidatos(candidatos);
+        generarPoblacion(n, m, "uniforme");
     }
 
     /**
      * Agrega un candidato individual al directorio
      * 
+     * @param id           ID del candidato
+     * @param m            Número de elementos por categoría
+     * @param distribucion Tipo de distribución para los valores
+     */
+    public void agregarCandidato(int id, int m, String distribucion) {
+        Candidato candidato = controllerCandidato.generarCandidato(id, m, distribucion);
+        directorio.agregarCandidato(candidato);
+    }
+
+    /**
+     * Agrega un candidato individual al directorio (versión de compatibilidad)
+     * 
      * @param id ID del candidato
      * @param m  Número de elementos por categoría
      */
     public void agregarCandidato(int id, int m) {
-        Candidato candidato = controllerCandidato.generarCandidato(id, m);
-        directorio.agregarCandidato(candidato);
+        agregarCandidato(id, m, "uniforme");
     }
 
     /**

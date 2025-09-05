@@ -3,8 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package co.edu.udistrital.taller1.controller;
-import co.edu.udistrital.taller1.model.Candidato;
 
+import co.edu.udistrital.taller1.model.Candidato;
 
 /**
  *
@@ -21,15 +21,19 @@ public class Controller {
 
     public void generarElementos(int N, int M) {
         try {
+            // Obtener la distribución seleccionada por el usuario
+            String distribucion = controllerVista.obtenerDistribucion();
+
             controllerVista.getVentanaPrincipal()
-                    .mostrarMensaje("Generando " + N + " candidatos con " + M + " elementos cada uno...");
+                    .mostrarMensaje("Generando " + N + " candidatos con " + M
+                            + " elementos cada uno usando distribución: " + distribucion);
 
             controllerDirectorio.limpiarDirectorio();
-            controllerDirectorio.generarPoblacion(N, M);
+            controllerDirectorio.generarPoblacion(N, M, distribucion);
             controllerVista.getVentanaPrincipal().mostrarMensaje("Generación completada. Total candidatos: " +
                     controllerDirectorio.obtenerTamañoDirectorio());
-            
-            for(Candidato c : controllerDirectorio.getDirectorio().getCandidatos()) {
+
+            for (Candidato c : controllerDirectorio.getDirectorio().getCandidatos()) {
                 System.out.println(c);
             }
 

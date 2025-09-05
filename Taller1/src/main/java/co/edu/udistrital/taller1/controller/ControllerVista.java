@@ -26,6 +26,7 @@ public class ControllerVista implements ActionListener{
         String comando = e.getActionCommand();
         if (comando.equals("Generar y Ordenar")) {
             if (validarElementos()) {
+                ventanaPrincipal.mostrarMensaje(obtenerDistribucion());
                 controller.generarElementos(obtenerN(), obtenerM());
                 controller.ordenarElementos();
             } else {
