@@ -37,20 +37,8 @@ public class Ordenador {
                     }
                 }
             }
-            
             candidato.setCorrupcion(lista); // actualizar la lista ordenada
-
-            // Imprimir la lista ordenada
-            System.out.println("Candidato ID: " + candidato.getId());
-            System.out.println("Lista de Corrupción ordenada:");
-            for (Corrupcion c : lista) {
-                System.out.println(c);
-            }
         }
-
-        System.out.println("Comparaciones: " + comparaciones);
-        System.out.println("Intercambios: " + intercambios);
-
     }
 
     public void BurbujaMarchas(ArrayList<Candidato> candidatos){
@@ -73,17 +61,8 @@ public class Ordenador {
             }
             
             candidato.setMarchas(lista); // actualizar la lista ordenada
-
-            // Imprimir la lista ordenada
-            System.out.println("Candidato ID: " + candidato.getId());
-            System.out.println("Lista de marchas ordenada:");
-            for (Marchas c : lista) {
-                System.out.println(c);
-            }
         }
 
-        System.out.println("Comparaciones: " + comparaciones);
-        System.out.println("Intercambios: " + intercambios);
     }
 
 
@@ -109,16 +88,7 @@ public class Ordenador {
             
             candidato.setHorasClase(lista); // actualizar la lista ordenada
 
-            // Imprimir la lista ordenada
-            System.out.println("Candidato ID: " + candidato.getId());
-            System.out.println("Lista de horas clase ordenada:");
-            for (HorasClase c : lista) {
-                System.out.println(c);
-            }
         }
-
-        System.out.println("Comparaciones: " + comparaciones);
-        System.out.println("Intercambios: " + intercambios);
 
     }
 
@@ -152,9 +122,6 @@ public class Ordenador {
             }
         }
 
-        System.out.println("Comparaciones: " + comparaciones);
-        System.out.println("Intercambios: " + intercambios);
-
     }
 
 
@@ -179,13 +146,6 @@ public class Ordenador {
             }
             
             candidato.setSobornos(lista);// actualizar la lista ordenada
-
-            // Imprimir la lista ordenada
-            System.out.println("Candidato ID: " + candidato.getId());
-            System.out.println("Lista de Sobornos ordenada:");
-            for (Sobornos c : lista) {
-                System.out.println(c);
-            }
         }
 
         System.out.println("Comparaciones: " + comparaciones);

@@ -20,11 +20,15 @@ public class ControllerVista implements ActionListener{
         asignarOyentes();
     }
 
+    /**
+     * Asigna los oyentes a los botones de la interfaz
+     */
     public final void asignarOyentes() {
         ventanaPrincipal.getBtnEjecutar().addActionListener(this);
         ventanaPrincipal.getBtnEjecutar().setActionCommand("Generar y Ordenar");
     }
 
+    
     @Override
     public void actionPerformed(ActionEvent e) {
         String comando = e.getActionCommand();

@@ -239,6 +239,9 @@ public class ControllerCandidato {
     }
 
 
+    /*
+     * * Getters para comparaciones e intercambios
+     */
     public long getComparaciones() {
         return ordenador.getComparaciones();
     }

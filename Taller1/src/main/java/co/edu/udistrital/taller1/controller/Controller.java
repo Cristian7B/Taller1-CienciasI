@@ -17,6 +17,14 @@ public class Controller {
         this.controllerDirectorio = new ControllerDirectorio(System.currentTimeMillis()); // Semilla basada en tiempo
     }
 
+    
+    /**
+     * Genera elementos (candidatos) en el directorio según los parámetros
+     * especificados
+     * 
+     * @param N Número de candidatos a generar
+     * @param M Número de elementos por candidato
+     */
     public void generarElementos(int N, int M) {
         try {
             // Obtener la distribución seleccionada por el usuario
@@ -36,6 +44,12 @@ public class Controller {
         }
     }
 
+    /**
+     * Ordena los elementos en el directorio usando el algoritmo especificado
+     * 
+     * @param algoritmo El nombre del algoritmo de ordenamiento a usar
+     * @return El tiempo tomado para ordenar en milisegundos, o -1 si hubo un error
+     */
     public double ordenarElementos(String algoritmo) {
         try {
             double tiempo = controllerDirectorio.ordenarCandidatos(algoritmo);

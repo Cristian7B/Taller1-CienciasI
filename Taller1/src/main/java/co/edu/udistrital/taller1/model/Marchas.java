@@ -17,6 +17,9 @@ public class Marchas {
         this.valor = valor;
     }
 
+    /*
+     * Getters y Setters
+     */
     public String getDescripcion() {
         return descripcion;
     }
