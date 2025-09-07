@@ -45,9 +45,9 @@ public class ControllerVista implements ActionListener{
                 
                 long comparaciones = controller.getControllerDirectorio().getControllerCandidato().getComparaciones();
                 long intercambios = controller.getControllerDirectorio().getControllerCandidato().getIntercambios();
-               
-                mostrarResultado(algoritmo, comparaciones, intercambios, (long) tiempo);
-               
+
+                mostrarResultado(algoritmo, comparaciones, intercambios,  tiempo);
+
                 controller.getControllerDirectorio().getControllerCandidato().resetContadores();
             } else {
                 ventanaPrincipal.mostrarMensaje("Por favor, ingrese valores válidos.");
@@ -55,7 +55,7 @@ public class ControllerVista implements ActionListener{
         }
     }
 
-    public void mostrarResultado(String algoritmo, long comparaciones, long intercambios, long tiempo) {
+    public void mostrarResultado(String algoritmo, long comparaciones, long intercambios, double tiempo) {
         ventanaPrincipal.agregarResultado(algoritmo, comparaciones, intercambios, tiempo);
     }
 

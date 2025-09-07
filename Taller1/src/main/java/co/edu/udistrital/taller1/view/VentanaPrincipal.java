@@ -37,10 +37,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private final JButton btnEjecutar;
     private final JTable tablaResultados;
     private final DefaultTableModel modeloTabla;
-    private final ControllerVista controllerVista;
+
 
     public VentanaPrincipal(ControllerVista controllerVista) {
-        this.controllerVista = controllerVista;
 
         setTitle("Comparación de Algoritmos de Ordenamiento");
         setSize(900, 600);
@@ -157,12 +156,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }
 
     public void agregarResultado(String algoritmo, String distribucion, int n, int m, long comparaciones,
-            long intercambios, long tiempo) {
+            long intercambios, double tiempo) {
         modeloTabla.addRow(new Object[] { algoritmo, distribucion, n, m, comparaciones, intercambios, tiempo });
     }
 
     // Método de compatibilidad (mantener por si acaso)
-    public void agregarResultado(String algoritmo, long comparaciones, long intercambios, long tiempo) {
+    public void agregarResultado(String algoritmo, long comparaciones, long intercambios, double tiempo) {
         // Obtener valores actuales de la interfaz
         String distribucion = getDistribucion();
         int n = Integer.parseInt(getN().isEmpty() ? "0" : getN());

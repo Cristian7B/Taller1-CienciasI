@@ -63,20 +63,12 @@ public class ControllerCandidato {
     private ArrayList<Integer> generarValoresSegunDistribucion(int m, String distribucion) {
         ArrayList<Integer> valores = new ArrayList<>();
 
-        switch (distribucion) {
-            case "Aleatoria":
-                valores = generarDistribucionUniforme(m);
-                break;
-            case "Casi ordenada":
-                valores = generarDistribucionCasiOrdenada(m);
-                break;
-            case "Inversa":
-                valores = generarDistribucionInversa(m);
-                break;
-            default:
-                valores = generarDistribucionUniforme(m);
-                break;
-        }
+        valores = switch (distribucion) {
+            case "Aleatoria" -> generarDistribucionUniforme(m);
+            case "Casi ordenada" -> generarDistribucionCasiOrdenada(m);
+            case "Inversa" -> generarDistribucionInversa(m);
+            default -> generarDistribucionUniforme(m);
+        };
         return valores;
     }
 
@@ -183,6 +175,7 @@ public class ControllerCandidato {
 
         ordenador.ordenarCandidatosBurbuja(candidatos);
         long fin = System.nanoTime();
+        System.out.println("Tiempo de burbuja: " + (fin - inicio) / 1_000_000.0 + " ms");
         return (fin - inicio) / 1_000_000.0; // retorna el tiempo en ms
     } 
     
@@ -195,17 +188,16 @@ public class ControllerCandidato {
     public double ordenarSeleccion(ArrayList<Candidato> candidatos) {
         long inicio = System.nanoTime();
         
-        ordenador.burbujaCorrupcion(candidatos);
-        ordenador.BurbujaMarchas(candidatos);
-        ordenador.BurbujaHorasClase(candidatos);
-        ordenador.BurbujaPrebendas(candidatos);
-        ordenador.BurbujaSobornos(candidatos);
+        ordenador.seleccionCorrupcion(candidatos);
+        ordenador.seleccionMarchas(candidatos);
+        ordenador.seleccionHorasClase(candidatos);
+        ordenador.seleccionPrebendas(candidatos);
+        ordenador.seleccionSobornos(candidatos);
 
         ordenador.ordenarCandidatosSeleccion(candidatos);
         long fin = System.nanoTime();
         return (fin - inicio) / 1_000_000.0; // retorna el tiempo en ms
 
-        
     }
 
     /**
@@ -216,11 +208,11 @@ public class ControllerCandidato {
     public double ordenarInsercion(ArrayList<Candidato> candidatos) {
         long inicio = System.nanoTime();
         
-        ordenador.burbujaCorrupcion(candidatos);
-        ordenador.BurbujaMarchas(candidatos);
-        ordenador.BurbujaHorasClase(candidatos);
-        ordenador.BurbujaPrebendas(candidatos);
-        ordenador.BurbujaSobornos(candidatos);
+        ordenador.insercionCorrupcion(candidatos);
+        ordenador.insercionMarchas(candidatos);
+        ordenador.insercionHorasClase(candidatos);
+        ordenador.insercionPrebendas(candidatos);
+        ordenador.insercionSobornos(candidatos);
         
         ordenador.ordenarCandidatosInsercion(candidatos);
         long fin = System.nanoTime();
@@ -236,11 +228,11 @@ public class ControllerCandidato {
     public double ordenarMergeSort(ArrayList<Candidato> candidatos) {
         long inicio = System.nanoTime();
 
-        ordenador.burbujaCorrupcion(candidatos);
-        ordenador.BurbujaMarchas(candidatos);
-        ordenador.BurbujaHorasClase(candidatos);
-        ordenador.BurbujaPrebendas(candidatos);
-        ordenador.BurbujaSobornos(candidatos);
+        ordenador.mergeSortcorrupcion(candidatos);
+        ordenador.mergeSortHorasClase(candidatos);
+        ordenador.mergeSortMarchas(candidatos);
+        ordenador.mergeSortPrebendas(candidatos);
+        ordenador.mergeSortSobornos(candidatos);
 
         ordenador.ordenarCandidatosMergeSort(candidatos);
         long fin = System.nanoTime();
@@ -256,11 +248,11 @@ public class ControllerCandidato {
     public double ordenarQuickSort(ArrayList<Candidato> candidatos) {
         long inicio = System.nanoTime();
         
-        ordenador.burbujaCorrupcion(candidatos);
-        ordenador.BurbujaMarchas(candidatos);
-        ordenador.BurbujaHorasClase(candidatos);
-        ordenador.BurbujaPrebendas(candidatos);
-        ordenador.BurbujaSobornos(candidatos);
+        ordenador.quicksortCorrupcion(candidatos);
+        ordenador.quicksortHorasClase(candidatos);
+        ordenador.quicksortMarchas(candidatos);
+        ordenador.quicksortPrebendas(candidatos);
+        ordenador.quicksortSobornos(candidatos);
 
         ordenador.ordenarCandidatosQuickSort(candidatos);
         long fin = System.nanoTime();

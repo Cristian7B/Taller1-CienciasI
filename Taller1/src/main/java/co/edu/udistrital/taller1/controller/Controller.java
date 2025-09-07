@@ -52,6 +52,7 @@ public class Controller {
     public double ordenarElementos(String algoritmo) {
         try {
             double tiempo = controllerDirectorio.ordenarCandidatos(algoritmo);
+            System.out.println("Tiempo de ordenamiento: " + tiempo + " ms");
             controllerVista.getVentanaPrincipal().mostrarMensaje("Candidatos ordenados correctamente. usando: " + algoritmo );
             return tiempo;
 
