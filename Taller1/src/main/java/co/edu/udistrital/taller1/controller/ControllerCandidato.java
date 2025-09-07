@@ -16,9 +16,6 @@ import co.edu.udistrital.taller1.model.Candidato;
  * @author crisc
  */
 public class ControllerCandidato {
-
-    
-
     private final Random random;
     private final Ordenador ordenador;
 
@@ -39,14 +36,12 @@ public class ControllerCandidato {
     public Candidato generarCandidato(int id, int m, String distribucion) {
         Candidato candidato = new Candidato(id, m);
 
-        // Generar valores para cada atributo según la distribución
         ArrayList<Integer> valoresMarchas = generarValoresSegunDistribucion(m, distribucion);
         ArrayList<Integer> valoresHoras = generarValoresSegunDistribucion(m, distribucion);
         ArrayList<Integer> valoresPrebendas = generarValoresSegunDistribucion(m, distribucion);
         ArrayList<Integer> valoresSobornos = generarValoresSegunDistribucion(m, distribucion);
         ArrayList<Integer> valoresCorrupcion = generarValoresSegunDistribucion(m, distribucion);
 
-        // Agregar los valores al candidato
         for (int i = 0; i < m; i++) {
             candidato.agregarMarcha("Marcha " + i, valoresMarchas.get(i));
             candidato.agregarHoras("Bloqueo " + i, valoresHoras.get(i));
@@ -68,13 +63,20 @@ public class ControllerCandidato {
     private ArrayList<Integer> generarValoresSegunDistribucion(int m, String distribucion) {
         ArrayList<Integer> valores = new ArrayList<>();
 
-        valores = switch (distribucion.toLowerCase()) {
-            case "aleatoria" -> generarDistribucionUniforme(m);
-            case "casi ordenada" -> generarDistribucionCasiOrdenada(m);
-            case "inversa" -> generarDistribucionInversa(m);
-            default -> generarDistribucionUniforme(m);
-        };
-
+        switch (distribucion) {
+            case "Aleatoria":
+                valores = generarDistribucionUniforme(m);
+                break;
+            case "Casi ordenada":
+                valores = generarDistribucionCasiOrdenada(m);
+                break;
+            case "Inversa":
+                valores = generarDistribucionInversa(m);
+                break;
+            default:
+                valores = generarDistribucionUniforme(m);
+                break;
+        }
         return valores;
     }
 
@@ -102,23 +104,23 @@ public class ControllerCandidato {
     private ArrayList<Integer> generarDistribucionCasiOrdenada(int m) {
         ArrayList<Integer> valores = new ArrayList<>();
 
-        // Crear una secuencia ordenada
         for (int i = 1; i <= m; i++) {
             valores.add(i);
         }
-
-        // Hacer algunas inversiones aleatorias (aproximadamente 10-20% del total)
         int numInversiones = Math.max(1, m / 10 + random.nextInt(m / 5));
 
         for (int i = 0; i < numInversiones; i++) {
             int pos1 = random.nextInt(m);
             int pos2 = random.nextInt(m);
 
-            // Intercambiar elementos
             Collections.swap(valores, pos1, pos2);
         }
 
         return valores;
+    }
+
+    public void resetContadores() {
+        ordenador.resetContadores();
     }
 
     /**
@@ -130,7 +132,6 @@ public class ControllerCandidato {
     private ArrayList<Integer> generarDistribucionInversa(int m) {
         ArrayList<Integer> valores = new ArrayList<>();
 
-        // Crear secuencia en orden descendente
         for (int i = m; i >= 1; i--) {
             valores.add(i);
         }
@@ -173,11 +174,14 @@ public class ControllerCandidato {
      */
     public double ordenarBurbuja(ArrayList<Candidato> candidatos) {
         long inicio = System.nanoTime();
+        
         ordenador.burbujaCorrupcion(candidatos);
         ordenador.BurbujaMarchas(candidatos);
         ordenador.BurbujaHorasClase(candidatos);
         ordenador.BurbujaPrebendas(candidatos);
         ordenador.BurbujaSobornos(candidatos);
+
+        ordenador.ordenarCandidatosBurbuja(candidatos);
         long fin = System.nanoTime();
         return (fin - inicio) / 1_000_000.0; // retorna el tiempo en ms
     } 
@@ -190,7 +194,14 @@ public class ControllerCandidato {
 
     public double ordenarSeleccion(ArrayList<Candidato> candidatos) {
         long inicio = System.nanoTime();
-        //ordenador.ordenarSeleccion(candidatos);
+        
+        ordenador.burbujaCorrupcion(candidatos);
+        ordenador.BurbujaMarchas(candidatos);
+        ordenador.BurbujaHorasClase(candidatos);
+        ordenador.BurbujaPrebendas(candidatos);
+        ordenador.BurbujaSobornos(candidatos);
+
+        ordenador.ordenarCandidatosSeleccion(candidatos);
         long fin = System.nanoTime();
         return (fin - inicio) / 1_000_000.0; // retorna el tiempo en ms
 
@@ -204,7 +215,14 @@ public class ControllerCandidato {
      */
     public double ordenarInsercion(ArrayList<Candidato> candidatos) {
         long inicio = System.nanoTime();
-        //ordenador.ordenarInsercion(candidatos);
+        
+        ordenador.burbujaCorrupcion(candidatos);
+        ordenador.BurbujaMarchas(candidatos);
+        ordenador.BurbujaHorasClase(candidatos);
+        ordenador.BurbujaPrebendas(candidatos);
+        ordenador.BurbujaSobornos(candidatos);
+        
+        ordenador.ordenarCandidatosInsercion(candidatos);
         long fin = System.nanoTime();
         return (fin - inicio) / 1_000_000.0; // retorna el tiempo en ms
     }
@@ -216,9 +234,15 @@ public class ControllerCandidato {
      */
 
     public double ordenarMergeSort(ArrayList<Candidato> candidatos) {
-
         long inicio = System.nanoTime();
-        //ordenador.ordenarMergeSort(candidatos);
+
+        ordenador.burbujaCorrupcion(candidatos);
+        ordenador.BurbujaMarchas(candidatos);
+        ordenador.BurbujaHorasClase(candidatos);
+        ordenador.BurbujaPrebendas(candidatos);
+        ordenador.BurbujaSobornos(candidatos);
+
+        ordenador.ordenarCandidatosMergeSort(candidatos);
         long fin = System.nanoTime();
         return (fin - inicio) / 1_000_000.0; // retorna el tiempo en ms
 
@@ -230,9 +254,15 @@ public class ControllerCandidato {
      * @param candidatos Lista de candidatos a ordenar
      */
     public double ordenarQuickSort(ArrayList<Candidato> candidatos) {
-
         long inicio = System.nanoTime();
-        //ordenador.ordenarQuickSort(candidatos);
+        
+        ordenador.burbujaCorrupcion(candidatos);
+        ordenador.BurbujaMarchas(candidatos);
+        ordenador.BurbujaHorasClase(candidatos);
+        ordenador.BurbujaPrebendas(candidatos);
+        ordenador.BurbujaSobornos(candidatos);
+
+        ordenador.ordenarCandidatosQuickSort(candidatos);
         long fin = System.nanoTime();
         return (fin - inicio) / 1_000_000.0; // retorna el tiempo en ms
 
