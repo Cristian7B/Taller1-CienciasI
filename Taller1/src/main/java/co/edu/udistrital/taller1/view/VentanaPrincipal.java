@@ -169,6 +169,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         agregarResultado(algoritmo, distribucion, n, m, comparaciones, intercambios, tiempo);
     }
 
+    public void mostrarGanador(String informacionGanador) {
+        JOptionPane.showMessageDialog(this, informacionGanador, "Ganador", JOptionPane.INFORMATION_MESSAGE);
+    }
+
     public void limpiarTabla() {
         modeloTabla.setRowCount(0);
     }

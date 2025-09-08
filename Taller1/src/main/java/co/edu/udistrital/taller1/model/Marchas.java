@@ -5,42 +5,39 @@
 package co.edu.udistrital.taller1.model;
 
 /**
- *
+ * Atributo del candidato que usa la clase Atributo para heredar sus propiedades
  * @author crisc
  */
-public class Marchas {
-    private String descripcion;
-    private int valor;
-
+public class Marchas extends Atributo{
     public Marchas(String descripcion, int valor) {
-        this.descripcion = descripcion;
-        this.valor = valor;
+        super(descripcion, valor);
     }
 
-    /*
-     * Getters y Setters
-     */
+    @Override
     public String getDescripcion() {
-        return descripcion;
+        return super.getDescripcion();
     }
 
+    @Override
     public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+        super.setDescripcion(descripcion);
     }
 
+    @Override
     public int getValor() {
-        return valor;
+        return super.getValor();
     }
 
+    @Override
     public void setValor(int valor) {
-        this.valor = valor;
+        super.setValor(valor);
     }
 
     @Override
     public String toString() {
         return "Marchas{" +
-                "descripcion='" + descripcion + '\'' +
-                ", valor=" + valor +
+                "descripcion='" + super.getDescripcion() + '\'' +
+                ", valor='" + super.getValor() + '\'' +
                 '}';
     }
 }

@@ -5,39 +5,35 @@
 package co.edu.udistrital.taller1.model;
 
 /**
- *
+ * Atributo del candidato que usa la clase Atributo para heredar sus propiedades
  * @author crisc
  */
-public class Prebendas {
-    private String descripcion;
-    private int valor;
-
+public class Prebendas extends Atributo{
     public Prebendas(String descripcion, int valor) {
-        this.descripcion = descripcion;
-        this.valor = valor;
+        super(descripcion, valor);
     }
 
     public String getDescripcion() {
-        return descripcion;
+        return super.getDescripcion();
     }
 
     public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+        super.setDescripcion(descripcion);
     }
 
     public int getValor() {
-        return valor;
+        return super.getValor();
     }
 
     public void setValor(int valor) {
-        this.valor = valor;
+        super.setValor(valor);
     }
 
     @Override
     public String toString() {
         return "Prebendas{" +
-                "descripcion='" + descripcion + '\'' +
-                ", valor=" + valor +
+                "descripcion='" + super.getDescripcion() + '\'' +
+                ", valor='" + super.getValor() + '\'' +
                 '}';
     }
 }

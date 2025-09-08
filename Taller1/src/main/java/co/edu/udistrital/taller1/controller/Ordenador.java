@@ -10,22 +10,24 @@ import co.edu.udistrital.taller1.model.Prebendas;
 import co.edu.udistrital.taller1.model.Sobornos;
 
 public class Ordenador {
-
+    /**
+     * Contadores para las operaciones realizadas (comparaciones e intercambios)
+     */
     private long comparaciones = 0;
     private long intercambios = 0;
 
-    public Ordenador() {
-    }
+    // ---------------------------- 
+    // Algoritmos de ordenamiento para cada uno de los atributos de los candidatos.
+    // Nuestro objetivo es ordenar los atributos de cada candidato individualmente. Y nuestro criterio de ordenamiento es
+    // de mayor a menor para tomar el primer valor, y a partir de ese valor ordenar los candidatos
 
-    public void resetContadores() {
-        this.comparaciones = 0;
-        this.intercambios = 0;
-    }
-
+    /**
+     * Algoritmo de ordenamiento Burbuja aplicado a la lista de Corrupción de cada candidato
+     * @param candidatos
+     */
     public void burbujaCorrupcion(ArrayList<Candidato> candidatos) {
-
-        for (Candidato candidato : candidatos) {
-            ArrayList<Corrupcion> lista = candidato.getCorrupcion(); 
+            for (Candidato candidato : candidatos) {
+            ArrayList<Corrupcion> lista = candidato.getCorrupcion();
             int n = lista.size();
 
             for (int i = 0; i < n - 1; i++) {
@@ -41,17 +43,20 @@ public class Ordenador {
                 }
             }
 
-            candidato.setCorrupcion(lista); 
+            candidato.setCorrupcion(lista);
 
         }
-
-
+        
     }
 
+    /**
+     * Algoritmo de ordenamiento Burbuja aplicado a la lista de Marchas de cada candidato
+     * @param candidatos
+     */
     public void BurbujaMarchas(ArrayList<Candidato> candidatos) {
         for (Candidato candidato : candidatos) {
 
-            ArrayList<Marchas> lista = candidato.getMarchas(); 
+            ArrayList<Marchas> lista = candidato.getMarchas();
             int n = lista.size();
 
             for (int i = 0; i < n - 1; i++) {
@@ -66,17 +71,22 @@ public class Ordenador {
                 }
             }
 
-            candidato.setMarchas(lista); 
+            candidato.setMarchas(lista);
 
         }
 
     }
 
+
+    /**
+     * Algoritmo de ordenamiento Burbuja aplicado a la lista de HorasClase de cada candidato
+     * @param candidatos
+     */
     public void BurbujaHorasClase(ArrayList<Candidato> candidatos) {
 
         for (Candidato candidato : candidatos) {
 
-            ArrayList<HorasClase> lista = candidato.getHorasClase(); 
+            ArrayList<HorasClase> lista = candidato.getHorasClase();
             int n = lista.size();
 
             for (int i = 0; i < n - 1; i++) {
@@ -91,15 +101,19 @@ public class Ordenador {
                     }
                 }
             }
-            candidato.setHorasClase(lista); 
+            candidato.setHorasClase(lista);
         }
     }
 
+    /**
+     * Algoritmo de ordenamiento Burbuja aplicado a la lista de Prebendas de cada candidato
+     * @param candidatos
+     */
     public void BurbujaPrebendas(ArrayList<Candidato> candidatos) {
 
         for (Candidato candidato : candidatos) {
 
-            ArrayList<Prebendas> lista = candidato.getPrebendas(); 
+            ArrayList<Prebendas> lista = candidato.getPrebendas();
             int n = lista.size();
 
             for (int i = 0; i < n - 1; i++) {
@@ -114,15 +128,20 @@ public class Ordenador {
                     }
                 }
             }
-            candidato.setPrebendas(lista); 
+            candidato.setPrebendas(lista);
         }
     }
 
+
+    /**
+     * Algoritmo de ordenamiento Burbuja aplicado a la lista de Sobornos de cada candidato
+     * @param candidatos
+     */
     public void BurbujaSobornos(ArrayList<Candidato> candidatos) {
 
         for (Candidato candidato : candidatos) {
 
-            ArrayList<Sobornos> lista = candidato.getSobornos(); 
+            ArrayList<Sobornos> lista = candidato.getSobornos();
             int n = lista.size();
 
             for (int i = 0; i < n - 1; i++) {
@@ -140,17 +159,19 @@ public class Ordenador {
         }
     }
 
-
+    /**
+     * Algoritmo de ordenamiento Inserción aplicado a la lista de Corrupción de cada candidato
+     * @param candidatos Lista de candidatos
+     */
     public void insercionCorrupcion(ArrayList<Candidato> candidatos) {
         for (Candidato candidato : candidatos) {
-            ArrayList<Corrupcion> lista = candidato.getCorrupcion(); 
+            ArrayList<Corrupcion> lista = candidato.getCorrupcion();
             int n = lista.size();
 
             System.out.println("Corrupcion sin ordenar:");
             for (Corrupcion corrupcion : lista) {
                 System.out.println(corrupcion);
             }
-
 
             for (int i = 1; i < n; i++) {
                 Corrupcion key = lista.get(i);
@@ -181,9 +202,13 @@ public class Ordenador {
         }
     }
 
+    /**
+     * Algoritmo de ordenamiento Inserción aplicado a la lista de HorasClase de cada candidato
+     * @param candidatos Lista de candidatos
+     */
     public void insercionHorasClase(ArrayList<Candidato> candidatos) {
         for (Candidato candidato : candidatos) {
-            ArrayList<HorasClase> lista = candidato.getHorasClase(); 
+            ArrayList<HorasClase> lista = candidato.getHorasClase();
             int n = lista.size();
 
             for (int i = 1; i < n; i++) {
@@ -206,9 +231,13 @@ public class Ordenador {
         }
     }
 
+    /**
+     * Algoritmo de ordenamiento Inserción aplicado a la lista de Marchas de cada candidato
+     * @param candidatos Lista de candidatos
+     */
     public void insercionMarchas(ArrayList<Candidato> candidatos) {
         for (Candidato candidato : candidatos) {
-            ArrayList<Marchas> lista = candidato.getMarchas(); 
+            ArrayList<Marchas> lista = candidato.getMarchas();
             int n = lista.size();
 
             for (int i = 1; i < n; i++) {
@@ -231,10 +260,13 @@ public class Ordenador {
         }
     }
 
-
+    /**
+     * Algoritmo de ordenamiento Inserción aplicado a la lista de Prebendas de cada candidato
+     * @param candidatos Lista de candidatos
+     */
     public void insercionPrebendas(ArrayList<Candidato> candidatos) {
         for (Candidato candidato : candidatos) {
-            ArrayList<Prebendas> lista = candidato.getPrebendas(); 
+            ArrayList<Prebendas> lista = candidato.getPrebendas();
             int n = lista.size();
 
             for (int i = 1; i < n; i++) {
@@ -257,10 +289,13 @@ public class Ordenador {
         }
     }
 
-
+    /**
+     * Algoritmo de ordenamiento Inserción aplicado a la lista de Sobornos de cada candidato
+     * @param candidatos Lista de candidatos
+     */
     public void insercionSobornos(ArrayList<Candidato> candidatos) {
         for (Candidato candidato : candidatos) {
-            ArrayList<Sobornos> lista = candidato.getSobornos(); 
+            ArrayList<Sobornos> lista = candidato.getSobornos();
             int n = lista.size();
 
             for (int i = 1; i < n; i++) {
@@ -283,10 +318,13 @@ public class Ordenador {
         }
     }
 
-
+    /**
+     * Algoritmo de ordenamiento Selección aplicado a la lista de Corrupción de cada candidato
+     * @param candidatos Lista de candidatos
+     */
     public void seleccionCorrupcion(ArrayList<Candidato> candidatos) {
         for (Candidato candidato : candidatos) {
-            ArrayList<Corrupcion> lista = candidato.getCorrupcion(); 
+            ArrayList<Corrupcion> lista = candidato.getCorrupcion();
             int n = lista.size();
 
             for (int i = 0; i < n - 1; i++) {
@@ -304,14 +342,17 @@ public class Ordenador {
                     intercambios++;
                 }
             }
-            candidato.setCorrupcion(lista); 
+            candidato.setCorrupcion(lista);
         }
     }
 
-
+    /**
+     * Algoritmo de ordenamiento Selección aplicado a la lista de HorasClase de cada candidato
+     * @param candidatos Lista de candidatos
+     */
     public void seleccionHorasClase(ArrayList<Candidato> candidatos) {
         for (Candidato candidato : candidatos) {
-            ArrayList<HorasClase> lista = candidato.getHorasClase(); 
+            ArrayList<HorasClase> lista = candidato.getHorasClase();
             int n = lista.size();
 
             for (int i = 0; i < n - 1; i++) {
@@ -329,13 +370,17 @@ public class Ordenador {
                     intercambios++;
                 }
             }
-            candidato.setHorasClase(lista); 
+            candidato.setHorasClase(lista);
         }
     }
 
+    /**
+     * Algoritmo de ordenamiento Selección aplicado a la lista de Marchas de cada candidato
+     * @param candidatos Lista de candidatos
+     */
     public void seleccionMarchas(ArrayList<Candidato> candidatos) {
         for (Candidato candidato : candidatos) {
-            ArrayList<Marchas> lista = candidato.getMarchas(); 
+            ArrayList<Marchas> lista = candidato.getMarchas();
             int n = lista.size();
 
             for (int i = 0; i < n - 1; i++) {
@@ -353,13 +398,17 @@ public class Ordenador {
                     intercambios++;
                 }
             }
-            candidato.setMarchas(lista); 
+            candidato.setMarchas(lista);
         }
     }
 
+    /**
+     * Algoritmo de ordenamiento Selección aplicado a la lista de Prebendas de cada candidato
+     * @param candidatos Lista de candidatos
+     */
     public void seleccionPrebendas(ArrayList<Candidato> candidatos) {
         for (Candidato candidato : candidatos) {
-            ArrayList<Prebendas> lista = candidato.getPrebendas(); 
+            ArrayList<Prebendas> lista = candidato.getPrebendas();
             int n = lista.size();
 
             for (int i = 0; i < n - 1; i++) {
@@ -377,13 +426,17 @@ public class Ordenador {
                     intercambios++;
                 }
             }
-            candidato.setPrebendas(lista); 
+            candidato.setPrebendas(lista);
         }
     }
 
+    /**
+     * Algoritmo de ordenamiento Selección aplicado a la lista de Sobornos de cada candidato
+     * @param candidatos Lista de candidatos
+     */
     public void seleccionSobornos(ArrayList<Candidato> candidatos) {
         for (Candidato candidato : candidatos) {
-            ArrayList<Sobornos> lista = candidato.getSobornos(); 
+            ArrayList<Sobornos> lista = candidato.getSobornos();
             int n = lista.size();
 
             for (int i = 0; i < n - 1; i++) {
@@ -401,15 +454,19 @@ public class Ordenador {
                     intercambios++;
                 }
             }
-            candidato.setSobornos(lista); 
+            candidato.setSobornos(lista);
         }
     }
 
+    /**
+     * Algoritmo de ordenamiento QuickSort aplicado a la lista de Corrupción de cada candidato
+     * @param candidatos Lista de candidatos
+     */
     public void quicksortCorrupcion(ArrayList<Candidato> candidatos) {
         for (Candidato candidato : candidatos) {
-            ArrayList<Corrupcion> lista = candidato.getCorrupcion(); 
+            ArrayList<Corrupcion> lista = candidato.getCorrupcion();
             quickSortCorrupcion(lista, 0, lista.size() - 1);
-            candidato.setCorrupcion(lista); 
+            candidato.setCorrupcion(lista);
         }
     }
 
@@ -427,7 +484,7 @@ public class Ordenador {
 
         for (int j = low; j < high; j++) {
             comparaciones++;
-            if (lista.get(j).getValor() <= pivot.getValor()) { 
+            if (lista.get(j).getValor() <= pivot.getValor()) {
                 i++;
                 Corrupcion temp = lista.get(i);
                 lista.set(i, lista.get(j));
@@ -442,12 +499,15 @@ public class Ordenador {
         return i + 1;
     }
 
-
+    /**
+     * Algoritmo de ordenamiento QuickSort aplicado a la lista de HorasClase de cada candidato
+     * @param candidatos Lista de candidatos
+     */
     public void quicksortHorasClase(ArrayList<Candidato> candidatos) {
         for (Candidato candidato : candidatos) {
-            ArrayList<HorasClase> lista = candidato.getHorasClase(); 
+            ArrayList<HorasClase> lista = candidato.getHorasClase();
             quickSortHorasClase(lista, 0, lista.size() - 1);
-            candidato.setHorasClase(lista); 
+            candidato.setHorasClase(lista);
         }
     }
 
@@ -458,13 +518,14 @@ public class Ordenador {
             quickSortHorasClase(lista, pi + 1, high);
         }
     }
+
     public int partitionHorasClase(ArrayList<HorasClase> lista, int low, int high) {
         HorasClase pivot = lista.get(high);
         int i = (low - 1);
 
         for (int j = low; j < high; j++) {
             comparaciones++;
-            if (lista.get(j).getValor() <= pivot.getValor()) { 
+            if (lista.get(j).getValor() <= pivot.getValor()) {
                 i++;
                 HorasClase temp = lista.get(i);
                 lista.set(i, lista.get(j));
@@ -479,11 +540,15 @@ public class Ordenador {
         return i + 1;
     }
 
+    /**
+     * Algoritmo de ordenamiento QuickSort aplicado a la lista de Marchas de cada candidato
+     * @param candidatos Lista de candidatos
+     */
     public void quicksortMarchas(ArrayList<Candidato> candidatos) {
         for (Candidato candidato : candidatos) {
-            ArrayList<Marchas> lista = candidato.getMarchas(); 
+            ArrayList<Marchas> lista = candidato.getMarchas();
             quickSortMarchas(lista, 0, lista.size() - 1);
-            candidato.setMarchas(lista); 
+            candidato.setMarchas(lista);
         }
     }
 
@@ -501,7 +566,7 @@ public class Ordenador {
 
         for (int j = low; j < high; j++) {
             comparaciones++;
-            if (lista.get(j).getValor() <= pivot.getValor()) { 
+            if (lista.get(j).getValor() <= pivot.getValor()) {
                 i++;
                 Marchas temp = lista.get(i);
                 lista.set(i, lista.get(j));
@@ -516,11 +581,15 @@ public class Ordenador {
         return i + 1;
     }
 
+    /**
+     * Algoritmo de ordenamiento QuickSort aplicado a la lista de Prebendas de cada candidato
+     * @param candidatos Lista de candidatos
+     */
     public void quicksortPrebendas(ArrayList<Candidato> candidatos) {
         for (Candidato candidato : candidatos) {
-            ArrayList<Prebendas> lista = candidato.getPrebendas(); 
+            ArrayList<Prebendas> lista = candidato.getPrebendas();
             quickSortPrebendas(lista, 0, lista.size() - 1);
-            candidato.setPrebendas(lista); 
+            candidato.setPrebendas(lista);
         }
     }
 
@@ -538,7 +607,7 @@ public class Ordenador {
 
         for (int j = low; j < high; j++) {
             comparaciones++;
-            if (lista.get(j).getValor() <= pivot.getValor()) { 
+            if (lista.get(j).getValor() <= pivot.getValor()) {
                 i++;
                 Prebendas temp = lista.get(i);
                 lista.set(i, lista.get(j));
@@ -553,11 +622,15 @@ public class Ordenador {
         return i + 1;
     }
 
+    /**
+     * Algoritmo de ordenamiento QuickSort aplicado a la lista de Sobornos de cada candidato
+     * @param candidatos Lista de candidatos
+     */
     public void quicksortSobornos(ArrayList<Candidato> candidatos) {
         for (Candidato candidato : candidatos) {
-            ArrayList<Sobornos> lista = candidato.getSobornos(); 
+            ArrayList<Sobornos> lista = candidato.getSobornos();
             quickSortSobornos(lista, 0, lista.size() - 1);
-            candidato.setSobornos(lista); 
+            candidato.setSobornos(lista);
         }
     }
 
@@ -575,7 +648,7 @@ public class Ordenador {
 
         for (int j = low; j < high; j++) {
             comparaciones++;
-            if (lista.get(j).getValor() <= pivot.getValor()) { 
+            if (lista.get(j).getValor() <= pivot.getValor()) {
                 i++;
                 Sobornos temp = lista.get(i);
                 lista.set(i, lista.get(j));
@@ -590,12 +663,16 @@ public class Ordenador {
         return i + 1;
     }
 
+    /**
+     * Algoritmo de ordenamiento MergeSort aplicado a la lista de Corrupción de cada candidato
+     * @param candidatos Lista de candidatos
+     */
     public void mergeSortcorrupcion(ArrayList<Candidato> candidatos) {
         for (Candidato candidato : candidatos) {
-            ArrayList<Corrupcion> lista = candidato.getCorrupcion(); 
+            ArrayList<Corrupcion> lista = candidato.getCorrupcion();
             ordenarCorrupcionMergeSort(lista);
             candidato.setCorrupcion(lista);
-        }    
+        }
     }
 
     public void ordenarCorrupcionMergeSort(ArrayList<Corrupcion> lista) {
@@ -617,7 +694,7 @@ public class Ordenador {
         int i = 0, j = 0, k = 0;
         while (i < left.size() && j < right.size()) {
             comparaciones++;
-            if (left.get(i).getValor() <= right.get(j).getValor()) { 
+            if (left.get(i).getValor() <= right.get(j).getValor()) {
                 lista.set(k++, left.get(i++));
             } else {
                 lista.set(k++, right.get(j++));
@@ -634,14 +711,19 @@ public class Ordenador {
         }
     }
 
+    /**
+     * Algoritmo de ordenamiento MergeSort aplicado a la lista de HorasClase de cada candidato
+     * @param candidatos Lista de candidatos
+     */
     public void mergeSortHorasClase(ArrayList<Candidato> candidatos) {
         for (Candidato candidato : candidatos) {
-            ArrayList<HorasClase> lista = candidato.getHorasClase(); 
+            ArrayList<HorasClase> lista = candidato.getHorasClase();
             ordenarHorasClaseMergeSort(lista);
             candidato.setHorasClase(lista);
         }
 
     }
+
 
     public void ordenarHorasClaseMergeSort(ArrayList<HorasClase> lista) {
         if (lista.size() < 2) {
@@ -662,7 +744,7 @@ public class Ordenador {
         int i = 0, j = 0, k = 0;
         while (i < left.size() && j < right.size()) {
             comparaciones++;
-            if (left.get(i).getValor() <= right.get(j).getValor()) { 
+            if (left.get(i).getValor() <= right.get(j).getValor()) {
                 lista.set(k++, left.get(i++));
             } else {
                 lista.set(k++, right.get(j++));
@@ -679,9 +761,13 @@ public class Ordenador {
         }
     }
 
+    /**
+     * Algoritmo de ordenamiento MergeSort aplicado a la lista de Marchas de cada candidato
+     * @param candidatos Lista de candidatos
+     */ 
     public void mergeSortMarchas(ArrayList<Candidato> candidatos) {
         for (Candidato candidato : candidatos) {
-            ArrayList<Marchas> lista = candidato.getMarchas(); 
+            ArrayList<Marchas> lista = candidato.getMarchas();
             ordenarMarchasMergeSort(lista);
             candidato.setMarchas(lista);
         }
@@ -701,13 +787,12 @@ public class Ordenador {
         mergeMarchas(lista, left, right);
     }
 
-
     private void mergeMarchas(ArrayList<Marchas> lista, ArrayList<Marchas> left,
             ArrayList<Marchas> right) {
         int i = 0, j = 0, k = 0;
         while (i < left.size() && j < right.size()) {
             comparaciones++;
-            if (left.get(i).getValor() <= right.get(j).getValor()) { 
+            if (left.get(i).getValor() <= right.get(j).getValor()) {
                 lista.set(k++, left.get(i++));
             } else {
                 lista.set(k++, right.get(j++));
@@ -724,10 +809,13 @@ public class Ordenador {
         }
     }
 
-
+    /**
+     * Algoritmo de ordenamiento MergeSort aplicado a la lista de Prebendas de cada candidato
+     * @param candidatos Lista de candidatos
+     */
     public void mergeSortPrebendas(ArrayList<Candidato> candidatos) {
         for (Candidato candidato : candidatos) {
-            ArrayList<Prebendas> lista = candidato.getPrebendas(); 
+            ArrayList<Prebendas> lista = candidato.getPrebendas();
             ordenarPrebendasMergeSort(lista);
             candidato.setPrebendas(lista);
         }
@@ -752,7 +840,7 @@ public class Ordenador {
         int i = 0, j = 0, k = 0;
         while (i < left.size() && j < right.size()) {
             comparaciones++;
-            if (left.get(i).getValor() <= right.get(j).getValor()) { 
+            if (left.get(i).getValor() <= right.get(j).getValor()) {
                 lista.set(k++, left.get(i++));
             } else {
                 lista.set(k++, right.get(j++));
@@ -769,9 +857,13 @@ public class Ordenador {
         }
     }
 
+    /**
+     * Algoritmo de ordenamiento MergeSort aplicado a la lista de Sobornos de cada candidato
+     * @param candidatos Lista de candidatos
+     */
     public void mergeSortSobornos(ArrayList<Candidato> candidatos) {
         for (Candidato candidato : candidatos) {
-            ArrayList<Sobornos> lista = candidato.getSobornos(); 
+            ArrayList<Sobornos> lista = candidato.getSobornos();
             ordenarSobornosMergeSort(lista);
             candidato.setSobornos(lista);
         }
@@ -796,7 +888,7 @@ public class Ordenador {
         int i = 0, j = 0, k = 0;
         while (i < left.size() && j < right.size()) {
             comparaciones++;
-            if (left.get(i).getValor() <= right.get(j).getValor()) { 
+            if (left.get(i).getValor() <= right.get(j).getValor()) {
                 lista.set(k++, left.get(i++));
             } else {
                 lista.set(k++, right.get(j++));
@@ -813,6 +905,15 @@ public class Ordenador {
         }
     }
 
+    // ---------------------------------
+    // Métodos para ordenar la lista de candidatos según un criterio específico
+    // Burbuja -> Corrupción
+    // Selección -> HorasClase
+    // Inserción -> Marchas
+    // MergeSort -> Prebendas
+    // QuickSort -> Sobornos
+    // ---------------------------------
+    
     public void ordenarCandidatosBurbuja(ArrayList<Candidato> candidatos) {
         int n = candidatos.size();
         for (int i = 0; i < n - 1; i++) {
@@ -821,7 +922,7 @@ public class Ordenador {
                 int corrupcionJ = candidatos.get(j).getCorrupcion().get(0).getValor();
                 int corrupcionJ1 = candidatos.get(j + 1).getCorrupcion().get(0).getValor();
 
-                if (corrupcionJ < corrupcionJ1) { 
+                if (corrupcionJ > corrupcionJ1) { 
                     Candidato temp = candidatos.get(j);
                     candidatos.set(j, candidatos.get(j + 1));
                     candidatos.set(j + 1, temp);
@@ -840,7 +941,7 @@ public class Ordenador {
                 int horasMin = candidatos.get(minIdx).getHorasClase().get(0).getValor();
                 int horasJ = candidatos.get(j).getHorasClase().get(0).getValor();
 
-                if (horasJ < horasMin) { 
+                if (horasJ < horasMin) { // Orden ascendente
                     minIdx = j;
                 }
             }
@@ -889,7 +990,6 @@ public class Ordenador {
         mergePrebendasCandidato(candidatos, left, right);
     }
 
-
     private void mergePrebendasCandidato(ArrayList<Candidato> candidatos, ArrayList<Candidato> left,
             ArrayList<Candidato> right) {
         int i = 0, j = 0, k = 0;
@@ -898,7 +998,7 @@ public class Ordenador {
             int prebendasLeft = left.get(i).getPrebendas().get(0).getValor();
             int prebendasRight = right.get(j).getPrebendas().get(0).getValor();
 
-            if (prebendasLeft >= prebendasRight) { 
+            if (prebendasLeft <= prebendasRight) { // Orden ascendente
                 candidatos.set(k++, left.get(i++));
             } else {
                 candidatos.set(k++, right.get(j++));
@@ -948,6 +1048,15 @@ public class Ordenador {
         candidatos.set(high, temp);
         intercambios++;
         return i + 1;
+    }
+
+    
+    /**
+        * Método para reiniciar los contadores después de hacer una comparación
+        */
+    public void resetContadores() {
+        this.comparaciones = 0;
+        this.intercambios = 0;
     }
 
     public long getComparaciones() {

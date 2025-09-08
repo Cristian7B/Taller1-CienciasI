@@ -10,13 +10,18 @@ import java.util.Random;
 
 import co.edu.udistrital.taller1.model.Candidato;
 
-
 /**
  *
  * @author crisc
  */
 public class ControllerCandidato {
+    /**
+     * Atributo para generar números aleatorios
+     */
     private final Random random;
+    /**
+     * Atributo para ordenar candidatos
+     */
     private final Ordenador ordenador;
 
     public ControllerCandidato(long semilla) {
@@ -166,7 +171,7 @@ public class ControllerCandidato {
      */
     public double ordenarBurbuja(ArrayList<Candidato> candidatos) {
         long inicio = System.nanoTime();
-        
+
         ordenador.burbujaCorrupcion(candidatos);
         ordenador.BurbujaMarchas(candidatos);
         ordenador.BurbujaHorasClase(candidatos);
@@ -177,8 +182,8 @@ public class ControllerCandidato {
         long fin = System.nanoTime();
         System.out.println("Tiempo de burbuja: " + (fin - inicio) / 1_000_000.0 + " ms");
         return (fin - inicio) / 1_000_000.0; // retorna el tiempo en ms
-    } 
-    
+    }
+
     /**
      * Ordena una lista de candidatos usando el algoritmo de selección
      * 
@@ -187,7 +192,7 @@ public class ControllerCandidato {
 
     public double ordenarSeleccion(ArrayList<Candidato> candidatos) {
         long inicio = System.nanoTime();
-        
+
         ordenador.seleccionCorrupcion(candidatos);
         ordenador.seleccionMarchas(candidatos);
         ordenador.seleccionHorasClase(candidatos);
@@ -207,13 +212,13 @@ public class ControllerCandidato {
      */
     public double ordenarInsercion(ArrayList<Candidato> candidatos) {
         long inicio = System.nanoTime();
-        
+
         ordenador.insercionCorrupcion(candidatos);
         ordenador.insercionMarchas(candidatos);
         ordenador.insercionHorasClase(candidatos);
         ordenador.insercionPrebendas(candidatos);
         ordenador.insercionSobornos(candidatos);
-        
+
         ordenador.ordenarCandidatosInsercion(candidatos);
         long fin = System.nanoTime();
         return (fin - inicio) / 1_000_000.0; // retorna el tiempo en ms
@@ -247,7 +252,7 @@ public class ControllerCandidato {
      */
     public double ordenarQuickSort(ArrayList<Candidato> candidatos) {
         long inicio = System.nanoTime();
-        
+
         ordenador.quicksortCorrupcion(candidatos);
         ordenador.quicksortHorasClase(candidatos);
         ordenador.quicksortMarchas(candidatos);
@@ -259,7 +264,6 @@ public class ControllerCandidato {
         return (fin - inicio) / 1_000_000.0; // retorna el tiempo en ms
 
     }
-
 
     /*
      * * Getters para comparaciones e intercambios

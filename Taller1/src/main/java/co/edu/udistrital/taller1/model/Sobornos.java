@@ -5,39 +5,35 @@
 package co.edu.udistrital.taller1.model;
 
 /**
- *
+ * Atributo del candidato que usa la clase Atributo para heredar sus propiedades
  * @author crisc
  */
-public class Sobornos {
-    private String descripcion;
-    private int valor;
-
+public class Sobornos extends Atributo{
     public Sobornos(String descripcion, int valor) {
-        this.descripcion = descripcion;
-        this.valor = valor;
+        super(descripcion, valor);
     }
 
     public String getDescripcion() {
-        return descripcion;
+        return super.getDescripcion();
     }
 
     public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+        super.setDescripcion(descripcion);
     }
 
     public int getValor() {
-        return valor;
+        return super.getValor();
     }
 
     public void setValor(int valor) {
-        this.valor = valor;
+        super.setValor(valor);
     }
 
     @Override
     public String toString() {
         return "Sobornos{" +
-                "descripcion='" + descripcion + '\'' +
-                ", valor=" + valor +
+                "descripcion='" + super.getDescripcion() + '\'' +
+                ", valor='" + super.getValor() + '\'' +
                 '}';
     }
 }

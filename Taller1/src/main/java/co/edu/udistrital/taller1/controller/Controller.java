@@ -9,7 +9,13 @@ package co.edu.udistrital.taller1.controller;
  * @author crisc
  */
 public class Controller {
+    /**
+     * Atributo para usar la vista
+     */
     private final ControllerVista controllerVista;
+    /**
+     * Atributo para usar el directorio
+     */
     private final ControllerDirectorio controllerDirectorio;
 
     public Controller() {

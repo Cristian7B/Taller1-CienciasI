@@ -11,8 +11,18 @@ import java.util.ArrayList;
  * @author crisc
  */
 public class Candidato {
-
+    /**
+     * Identificador del candidato
+     */
     private final int id;
+    /**
+     * Nombre del candidato
+     */
+    private String nombreCandidato;
+
+    /**
+     * Atributos de comparación
+     */
     private final ArrayList<Marchas> marchas;
     private final ArrayList<HorasClase> horasClase;
     private final ArrayList<Prebendas> prebendas;
@@ -26,8 +36,23 @@ public class Candidato {
         this.prebendas = new ArrayList<>(m);
         this.sobornos = new ArrayList<>(m);
         this.corrupcion = new ArrayList<>(m);
+        this.nombreCandidato = generarNombreCompleto();
     }
 
+    /**
+     * Genera un nombre completo aleatorio usando los enums de nombres y apellidos
+     * 
+     * @return String con el nombre completo (nombre + apellido + apellido)
+     */
+    private String generarNombreCompleto() {
+        return Nombres.obtenerNombreAleatorio() + " " +
+                Apellidos.obtenerApellidoAleatorio() + " " +
+                Apellidos.obtenerApellidoAleatorio();
+    }
+
+    /**
+     * Métodos para agregar información a los atributos
+     */
     public void agregarMarcha(String desc, int valor) {
         marchas.add(new Marchas(desc, valor));
     }
@@ -53,6 +78,10 @@ public class Candidato {
         return id;
     }
 
+    public String getNombreCandidato() {
+        return nombreCandidato;
+    }
+
     public ArrayList<Marchas> getMarchas() {
         return new ArrayList<>(marchas);
     }
@@ -72,6 +101,7 @@ public class Candidato {
     public ArrayList<Corrupcion> getCorrupcion() {
         return new ArrayList<>(corrupcion);
     }
+
     public void setCorrupcion(ArrayList<Corrupcion> corrupcion) {
         this.corrupcion.clear();
         this.corrupcion.addAll(corrupcion);
@@ -99,7 +129,7 @@ public class Candidato {
 
     @Override
     public String toString() {
-        return "Candidato " + id +
+        return "Candidato " + id + " (" + nombreCandidato + ")" +
                 "\n  Marchas=" + marchas +
                 "\n  HorasClase=" + horasClase +
                 "\n  Prebendas=" + prebendas +

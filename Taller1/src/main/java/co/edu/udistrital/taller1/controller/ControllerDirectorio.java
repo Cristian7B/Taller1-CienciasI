@@ -14,8 +14,13 @@ import co.edu.udistrital.taller1.model.Directorio;
  * @author crisc
  */
 public class ControllerDirectorio {
-
+    /**
+     * Atributo para manejar el directorio
+     */
     private final Directorio directorio;
+    /**
+     * Atributo para manejar los candidatos
+     */
     private final ControllerCandidato controllerCandidato;
 
     public ControllerDirectorio(long semilla) {
